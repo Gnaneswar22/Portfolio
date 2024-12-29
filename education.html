@@ -28,82 +28,13 @@
             min-height: 100vh;
             background: #1a1a1a;
             font-family: Arial, sans-serif;
+            background: rgb(81, 126, 133);
+background: -moz-radial-gradient(circle, rgba(58,161,180,1) 0%, rgba(253, 29, 238, 0.567) 50%, rgb(81, 81, 112) 100%);
+background: -webkit-radial-gradient(circle, rgba(58,161,180,1) 0%, rgb(143, 77, 139) 50%, rgba(69,73,252,1) 100%);
+background: radial-gradient(circle, rgba(58,161,180,1) 0%, rgb(139, 86, 135) 50%, rgb(58, 59, 116) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3aa1b4",endColorstr="#4549fc",GradientType=1);
         }
-        body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /* Gradient using your color scheme */
-    background: linear-gradient(
-        135deg,
-        #2B3B4E 0%,
-        #1a2028 20%,
-        #1a1a1a 50%,
-        #1a2028 80%,
-        #2B3B4E 100%
-    );
-    font-family: Arial, sans-serif;
-    position: relative;
-}
-
-/* Add animated overlay with your colors */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        45deg,
-        rgba(0, 191, 165, 0.1),  /* #00BFA5 with opacity */
-        rgba(43, 59, 78, 0.1),   /* #2B3B4E with opacity */
-        rgba(255, 91, 127, 0.1)  /* #FF5B7F with opacity */
-    );
-    animation: gradientShift 15s ease infinite;
-    background-size: 200% 200%;
-    z-index: 0;
-}
-
-/* Subtle animated gradient */
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Add depth with radial gradient */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at center,
-        transparent 0%,
-        rgba(26, 26, 26, 0.4) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Enhanced container background */
-.container {
-    background: rgba(43, 59, 78, 0.05);  /* #2B3B4E with low opacity */
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
+        
 
 /* Header */
 .header {
@@ -169,6 +100,7 @@ body::after {
 
         .container {
             margin-top: 40px;
+            margin-left: 20px;
             position: relative;
             width: 1200px;
             padding: 50px;
@@ -204,12 +136,12 @@ body::after {
 
         /* Stairs Styling */
         .stairs {
-            top: 50px;
+            top: 80px;
             position: relative;
-            width: 400px;
-            height: 300px;
+            width: 390px;
+            height: 290px;
             transform-style: preserve-3d;
-            transform: rotateX(-25deg) rotateY(25deg);
+            transform: rotateX(-25deg) rotateY(30deg);
         }
 
         .stairs .base {
@@ -255,7 +187,7 @@ body::after {
             width: 350px;
             height: 100px;
             
-            transform: rotateY(90deg) translateZ(-175px);
+            transform: rotateY(90deg) translateZ(-170px);
             transition: all 0.3s ease;
         }
         /* Update step content to match panels */
@@ -394,19 +326,18 @@ body::after {
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: -400px;
+  
 }
 
 .panel {
-    width: 380px;
-    height: 100px;
-    padding: 15px;
-    border-radius: 1px;
-    opacity: 0;
-    transform: translateX(-250px);
-    transition: all 0.8s ease;
-    color: white;
-    animation: slideIn 0.8s ease forwards;
+    width: 430px;
+    height: 110px;
+            align-items: center;
+            
+            padding: 20px;
+            color: white;
+           
+           
 }
 
 @keyframes slideIn {
@@ -422,20 +353,20 @@ body::after {
 
 /* Keeping your exact original positions */
 .panel:nth-child(1) {
-    margin-top: 110px;
-    margin-left: 90px;
+    margin-top: 80px;
+    margin-left: 250px;
     animation-delay: 0.3s;
 }
 
 .panel:nth-child(2) {
-    margin-top: -200px;
-    margin-left: 150px;
+    margin-top: -220px;
+    margin-left: 330px;
     animation-delay: 0.6s;
 }
 
 .panel:nth-child(3) {
-    margin-top: -200px;
-    margin-left: 250px;
+    margin-top: -220px;
+    margin-left: 410px;
     animation-delay: 0.9s;
 }
 
@@ -509,7 +440,7 @@ body::after {
 /* Success Icon at top */
 .success-icon {
     position: absolute;
-    top: -90px;
+    top: -70px;
     right:22px;
     display: flex;
     align-items: center;
@@ -524,7 +455,7 @@ body::after {
     width: 140px;
     height: auto;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);  /* Optional: adds shadow */
-    
+  
 }
 
 .success-text h2 {
@@ -584,8 +515,28 @@ body::after {
     height:auto; /* Adjust size as needed */
     border-radius: 10px;  /* Optional: for rounded corners */
     object-fit: cover;  /* This ensures the image covers the area nicely */
+    animation: floatIcon 3s ease-in-out infinite;
 }
-
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+.school-icon{
+    position: absolute;
+    top: 300px;
+    right:350px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    z-index: 11;
+}
+.school-icon img{
+    width: 200px;
+    height: auto;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);  /* Optional: adds shadow */
+}
     </style>
 </head>
 <body>
@@ -629,7 +580,13 @@ body::after {
         <img src="images/education.png" alt="Business Logo">
     </div>
 </div>
-
+<div class="school-icon">
+    <img src="images/school.png" alt="Success">
+    <div class="success-text">
+        <h2></h2>
+        <p></p>
+    </div>
+</div>
 
 <!-- Add this to each step div -->
 
@@ -666,31 +623,32 @@ body::after {
                 </div>
             </div>
 
-            <div class="panels-container">
-                <div class="panel active">
-                    <div class="panel-header">
-                        <i class="fas fa-hourglass"></i>
-                        <h3>SSC</h3>
-                    </div>
-                    <p>Time management and planning phase</p>
-                </div>
-                <div class="panel">
-                    <div class="panel-header">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>Intermediate</h3>
-                    </div>
-                    <p></p>
-                </div>
-                <div class="panel">
-                    <div class="panel-header">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>B-Tech</h3>
-                    </div>
-                    <p>Sri Sivani College Of Engineering <br> Artificial Inelligence & Machine Learning -2026</p>
-                </div>
+                  </div>
+    </div>
+    <div class="panels-container">
+        <div class="panel active">
+            <div class="panel-header">
+                <i class="fas fa-hourglass"></i>
+                <h3>SSC</h3>
             </div>
+            <p>Time management and planning phase</p>
+        </div>
+        <div class="panel">
+            <div class="panel-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Intermediate</h3>
+            </div>
+            <p></p>
+        </div>
+        <div class="panel">
+            <div class="panel-header">
+                <i class="fas fa-bullseye"></i>
+                <h3>B-Tech</h3>
+            </div>
+            <p>Sri Sivani College Of Engineering <br> Artificial Inelligence & Machine Learning -2026</p>
         </div>
     </div>
+
 
 
 </body>
