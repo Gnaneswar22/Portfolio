@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+        :root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+}
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +31,190 @@
         }
 
         body {
-            background-color: #0a192f;
-            color: #8892b0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* Animated background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(45, 27, 105, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(233, 75, 60, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .profile-section {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(233, 75, 60, 0.1);
+        }
+
+        .profile-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(233, 75, 60, 0.2);
+        }
+
+        .content-section {
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--accent-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-primary), transparent);
+        }
+
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(233, 75, 60, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(233, 75, 60, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(233, 75, 60, 0.3);
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Particle effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(233, 75, 60, 0.2);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+
+
 
         .header {
     padding: 1.5rem 4rem;
@@ -78,148 +277,100 @@
     transform: translateY(-2px);
 }
 
-
-        .about-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 6rem 2rem 2rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 4rem;
-            width: 100%;
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .section-title {
-            color: #64ffda;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: #64ffda;
-        }
-
-        .typing-effect {
-            overflow: hidden;
-            border-right: .15em solid #64ffda;
-            white-space: nowrap;
-            margin: 0;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end),
-                       blink-caret .75s step-end infinite;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight {
-            color: #64ffda;
-        }
-
-        .image-container {
-            flex: 0 0 40%;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 20px 20px 60px #041221,
-                       -20px -20px 60px #0f2645;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: translateY(-10px);
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .skills-list li {
-            list-style: none;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .skills-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: #64ffda;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #64ffda }
-        }
-
-        @media (max-width: 768px) {
-            .about-container {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-
-            .image-container {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
     </style>
 </head>
 <body>
-  
+ <!-- Header -->
+ <header class="header">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="education.html">Education</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html"> <button class="download-cv"> Download CV </button></a>
+    </nav>
+</header>
+
+    <!-- Add particles container -->
+    <div class="particles"></div>
+
+    <div class="container">
+        <section class="about-section">
+            <div class="profile-section">
+                <!-- Replace with your actual image -->
+                <img src="images/bg.jpg" alt="Profile Picture" class="profile-image">
+            </div>
+            
+            <div class="content-section">
+                <h1 class="section-title">About Me</h1>
+                <p>
+                    Hello! I'm a passionate student currently pursuing my graduation, with a deep interest in creating innovative digital solutions. I thrive on turning complex problems into elegant, user-friendly applications.
+                </p>
+                <br>
+                <p>
+                    My journey in technology is driven by continuous learning and a desire to create meaningful impact through code.
+                </p>
+
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>Building responsive and dynamic web applications</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-paint-brush skill-icon"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Creating intuitive user experiences</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-mobile-alt skill-icon"></i>
+                        <h3>Creative Designing</h3>
+                        <p>Developing responsive solutions</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-project-diagram skill-icon"></i>
+                        <h3>Problem Solving</h3>
+                        <p>Finding efficient solutions to complex problems</p>
+                    </div>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://github.com/Gnaneswar22" class="contact-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/gnaneswar-damarasingu-65908030a/" class="contact-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/gnanesh847" class="contact-link"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:gnaneswardamarasingu.com" class="contact-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script>
-        // Add smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // Random animation
+                particle.style.animation = `float ${10 + Math.random() * 20}s linear infinite`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
     </script>
 </body>
 </html>

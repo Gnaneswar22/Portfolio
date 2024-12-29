@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #64ffda;
+            --bg-color: #0e1014;
+            --text-light: #8892b0;
+            --text-bright: #ccd6f6;
+        }
+
+        :root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            width: 100%;
+          
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .resume-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            margin-top:30px;
+        }
+
+        .resume-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+            animation: widthAnim 2s ease-in-out infinite;
+        }
+
+        @keyframes widthAnim {
+            0% { width: 0; }
+            50% { width: 100px; }
+            100% { width: 0; }
+        }
+
+        .resume-wrapper {
+            position: relative;
+            margin: 2rem auto;
+            max-width: 800px;
+            perspective: 1000px;
+        }
+
+        .resume-image-container {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0) rotate3d(0,1,0,0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate3d(0,1,0,3deg);
+            }
+            100% {
+                transform: translateY(0) rotate3d(0,1,0,0deg);
+            }
+        }
+
+        .resume-image {
+            width: 60%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .resume-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(100,255,218,0.2);
+        }
+
+        .download-section {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .download-button {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(100,255,218,0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .download-button:hover::before {
+            left: 100%;
+        }
+
+        .download-button:hover {
+            background: rgba(100,255,218,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100,255,218,0.2);
+        }
+
+        .download-icon {
+            animation: bounceDown 1s ease-in-out infinite;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        .file-info {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10,25,47,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 1rem;
+            }
+            
+            .resume-title {
+                font-size: 2rem;
+            }
+            
+            .download-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+
+
+
+
+
+
+        .header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(42, 45, 58, 0.98);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+    </style>
+</head>
+<body>
+
+     <!-- Header -->
+     <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="#contact">Contact</a>
+            <a href="resume.html"> <button class="download-cv"> Download CV </button></a>
+        </nav>
+    </header>
+    <div class="resume-container">
+        <h1 class="resume-title">My Resume</h1>
+        
+        <div class="resume-wrapper">
+            <div class="resume-image-container">
+                <!-- Replace with your resume image -->
+                <img src="images/resume.jpg" alt="Resume Preview" class="resume-image">
+            </div>
+        </div>
+
+        <div class="download-section">
+            <button class="download-button" onclick="downloadResume()">
+                <span>Download Resume</span>
+                <i class="fas fa-download download-icon"></i>
+            </button>
+            <p class="file-info">PDF Format • 2.1 MB</p>
+        </div>
+    </div>
+
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script>
+function downloadResume() {
+    const loadingOverlay = document.querySelector('.loading-overlay');
+    loadingOverlay.style.display = 'flex';
+
+    // Set a timeout for fetch operation (e.g., 10 seconds)
+    const fetchWithTimeout = (url, options, timeout = 10000) =>
+        Promise.race([
+            fetch(url, options),
+            new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('Request timed out')), timeout)
+            ),
+        ]);
+
+    fetchWithTimeout('images/resume.pdf')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const blobUrl = window.URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.style.display = 'none';
+            downloadLink.href = blobUrl;
+            const timestamp = '2024-12-29';
+            downloadLink.download = `Resume_${timestamp}.pdf`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            window.URL.revokeObjectURL(blobUrl);
+        })
+        .catch(error => {
+            console.error('Download failed:', error);
+            alert('Unable to download the resume. Please check your connection or file path.');
+        })
+        .finally(() => {
+            loadingOverlay.style.display = 'none';
+        });
+}
+
+    </script>
+</body>
+</html>

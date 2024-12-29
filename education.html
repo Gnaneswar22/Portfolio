@@ -15,6 +15,16 @@
     --text-gray: #B0B0B0;
     --text-gold: #FFD700;
 }
+
+:root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -26,13 +36,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #1a1a1a;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             font-family: Arial, sans-serif;
-            background: rgb(81, 126, 133);
-background: -moz-radial-gradient(circle, rgba(58,161,180,1) 0%, rgba(253, 29, 238, 0.567) 50%, rgb(81, 81, 112) 100%);
-background: -webkit-radial-gradient(circle, rgba(58,161,180,1) 0%, rgb(143, 77, 139) 50%, rgba(69,73,252,1) 100%);
-background: radial-gradient(circle, rgba(58,161,180,1) 0%, rgb(139, 86, 135) 50%, rgb(58, 59, 116) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3aa1b4",endColorstr="#4549fc",GradientType=1);
+          
         }
         
 
@@ -549,8 +556,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3aa1b4",endCo
             <a href="aboutme.html">About</a>
             <a href="skills.html">Skills</a>
             <a href="education.html">Education</a>
-            <a href="#contact">Contact</a>
-            <button class="download-cv">Download CV</button>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html"> <button class="download-cv"> Download CV </button></a>  
         </nav>
     </header>
    
