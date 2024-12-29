@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Timeline Stairs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Gradient using your color scheme */
+    background: linear-gradient(
+        135deg,
+        #2B3B4E 0%,
+        #1a2028 20%,
+        #1a1a1a 50%,
+        #1a2028 80%,
+        #2B3B4E 100%
+    );
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+/* Add animated overlay with your colors */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 191, 165, 0.1),  /* #00BFA5 with opacity */
+        rgba(43, 59, 78, 0.1),   /* #2B3B4E with opacity */
+        rgba(255, 91, 127, 0.1)  /* #FF5B7F with opacity */
+    );
+    animation: gradientShift 15s ease infinite;
+    background-size: 200% 200%;
+    z-index: 0;
+}
+
+/* Subtle animated gradient */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Add depth with radial gradient */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(26, 26, 26, 0.4) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Enhanced container background */
+.container {
+    background: rgba(43, 59, 78, 0.05);  /* #2B3B4E with low opacity */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Header */
+.header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(42, 45, 58, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+        .container {
+            margin-top: 40px;
+            position: relative;
+            width: 1200px;
+            padding: 50px;
+            display: flex;
+            gap: 40px;
+            justify-content: flex-end;
+        }
+
+        /* Business Timeline Logo */
+        .timeline-logo {
+            position: absolute;
+            left: -70px;
+            top: 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo-arrows {
+            display: flex;
+            gap: 5px;
+        }
+
+        .logo-arrow {
+            width: 20px;
+            height: 30px;
+        }
+
+        .logo-arrow:nth-child(1) { background: #00BFA5; }
+        .logo-arrow:nth-child(2) { background: #2B3B4E; }
+        .logo-arrow:nth-child(3) { background: #FF5B7F; }
+
+        /* Stairs Styling */
+        .stairs {
+            top: 50px;
+            position: relative;
+            width: 400px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(25deg);
+        }
+
+        .stairs .base {
+            position: absolute;
+            top: 0;
+            left: 90px;
+            width: 270px;
+            height: 350px;
+            background: #1a1a2e;
+            transform: rotateX(90deg) translateZ(-175px) scale(1.25);
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        .stairs .step {
+            position: absolute;
+            bottom: 0;
+            left: calc(90px * var(--i));
+            width: 75px;
+            height: calc(100px * var(--i));
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stairs .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90px;
+            height: 350px;
+            transform: rotateX(90deg) translateZ(175px);
+            transition: all 0.3s ease;
+            background: #00BFA5 !important;
+        }
+
+        .stairs .step::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 100px;
+            
+            transform: rotateY(90deg) translateZ(-175px);
+            transition: all 0.3s ease;
+        }
+        /* Update step content to match panels */
+.step-content {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Update percentage indicators to match theme */
+.step-percentage {
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+}
+
+        .stairs .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90px;
+            height: 350px;
+            transform: rotateX(90deg) translateZ(175px);
+            transition: all 0.3s ease;
+            background: #00BFA5 !important;
+        }
+
+        .stairs .step:nth-child(1)::before {
+            background: #3498db;
+        }
+
+        .stairs .step:nth-child(2)::before {
+            background: #00BFA5;
+        }
+
+        .stairs .step:nth-child(3)::before {
+            background: #FF5B7F;
+        }
+
+        .stairs .step::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 100px;
+            transform: rotateY(90deg) translateZ(-175px);
+            transition: all 0.3s ease;
+            
+        }
+
+        .stairs .step:nth-child(1)::after {
+            background: #1abc9c;
+        }
+
+        .stairs .step:nth-child(2)::after {
+            background: #00A896;
+        }
+
+        .stairs .step:nth-child(3)::after {
+            background: #E64A6F;
+        }
+
+        .stairs .step i {
+            position: absolute;
+            display: block;
+            width: 90px;
+            height: 100%;
+            background:#00BFA5;
+            transform-style: preserve-3d;
+        }
+        /* Top surface colors (::before) */
+      
+/* Front faces (i elements) */
+
+
+
+.stairs .step:nth-child(5)::before {
+    background: #00BFA5 !important;  /* Teal/Turquoise */
+}
+.stairs .step:nth-child(5)::before {
+    background: #00BFA5 !important;  /* Teal/Turquoise */
+}
+
+
+.stairs .step:nth-child(3)::before {
+    background: #2B3B4E !important;  /* Navy Blue */
+}
+
+.stairs .step:nth-child(4)::before {
+    background: #FF5B7F !important;  /* Pink/Coral */
+}
+.stairs .step:nth-child(2)::after {
+    background: #00BFA5;  /* Medium gray */
+}
+
+.stairs .step:nth-child(3)::after {
+    background: #2B3B4E; 
+    align-items: center; /* Another medium gray */
+}
+
+.stairs .step:nth-child(4)::after {
+    background: #FF5B7F;  /* Slightly darker gray */
+}
+
+.stairs .step:nth-child(5)::after {
+    background: #00BFA5;  /* Even darker gray */
+}
+
+.stairs .step:nth-child(6)::after {
+    background: #B8B8B8;  /* Darkest gray */
+}
+
+/* Front faces (i elements) */
+.stairs .step i {
+    background: #00BFA5;  /* Standard gray */
+}
+
+.stairs .step:nth-child(5) i {
+    background: #B0B0B0;  /* Darker gray for 5th step */
+}
+
+
+
+
+        .stairs .step i:nth-child(1) {
+            transform: translateZ(175px);
+            background: #FFFFFF;
+        }
+
+        .stairs .step i:nth-child(2) {
+            transform: translateZ(-175px);
+        }
+
+/* Panels Container */
+.panels-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: -400px;
+}
+
+.panel {
+    width: 380px;
+    height: 100px;
+    padding: 15px;
+    border-radius: 1px;
+    opacity: 0;
+    transform: translateX(-250px);
+    transition: all 0.8s ease;
+    color: white;
+    animation: slideIn 0.8s ease forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keeping your exact original positions */
+.panel:nth-child(1) {
+    margin-top: 110px;
+    margin-left: 90px;
+    animation-delay: 0.3s;
+}
+
+.panel:nth-child(2) {
+    margin-top: -200px;
+    margin-left: 150px;
+    animation-delay: 0.6s;
+}
+
+.panel:nth-child(3) {
+    margin-top: -200px;
+    margin-left: 250px;
+    animation-delay: 0.9s;
+}
+
+.panel {
+    opacity: 1;
+    animation: slideIn 0.8s ease forwards;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-header i {
+    font-size: 1.5rem;
+}
+
+/* Panel colors */
+.panel:nth-child(1) { background: #00BFA5; }
+.panel:nth-child(2) { background: #2B3B4E; }
+.panel:nth-child(3) { background: #FF5B7F; }
+
+
+        .step-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(176px);
+            color: #333;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .percentage {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .step-arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(176px);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                transform: scale(0.6);
+            }
+        }
+        /* Add these styles to your existing CSS */
+
+/* Success Icon at top */
+.success-icon {
+    position: absolute;
+    top: -90px;
+    right:22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    z-index: 11;
+  
+}
+
+
+.success-icon img {
+    width: 140px;
+    height: auto;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);  /* Optional: adds shadow */
+    
+}
+
+.success-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.success-text p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Large arrow on top of stair 3 */
+.top-arrow {
+    position: absolute;
+    top: -100px;
+    right: 50px;
+    width: 80px;
+    height: 120px;
+    background: #FF5B7F;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: translateZ(176px);
+    z-index: 11;
+}
+/* Update the step icon positioning */
+
+
+
+
+
+/* Make panels visible by default */
+.panel {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: none;
+}
+
+/* Remove hover effects and cursor pointer */
+.stairs .step {
+    cursor: default;
+}
+
+/* Add or update this in your CSS */
+.education-logo {
+    position: absolute;
+    left:-50px;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-image img {
+    width: 500px;  /* Adjust size as needed */
+    height:auto; /* Adjust size as needed */
+    border-radius: 10px;  /* Optional: for rounded corners */
+    object-fit: cover;  /* This ensures the image covers the area nicely */
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="#contact">Contact</a>
+            <button class="download-cv">Download CV</button>
+        </nav>
+    </header>
+   
+
+
+
+    <div class="container">
+        <div class="timeline-logo">
+            <div class="logo-arrows">
+                <div class="logo-arrow"></div>
+                <div class="logo-arrow"></div>
+                <div class="logo-arrow"></div>
+            </div>
+            <span>EDUCATION</span>
+        </div>
+<!-- Add this in your container div, before the stairs -->
+<div class="success-icon">
+    <img src="images/graduate.png" alt="Success">
+    <div class="success-text">
+        <h2></h2>
+        <p></p>
+    </div>
+</div>
+<div class="education-logo">
+    <div class="logo-image">
+        <!-- Replace 'your-image-path.jpg' with your actual image path -->
+        <img src="images/education.png" alt="Business Logo">
+    </div>
+</div>
+
+
+<!-- Add this to each step div -->
+
+        <div class="stairs">
+            <div class="base"></div>
+            <div class="step" style="--i:1">
+                <i></i>
+                <i></i>
+                <span class="step-arrow"></span>
+                <span class="percentage">40%</span>
+                <span class="step-number">01</span>
+                <div class="step-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+            <div class="step" style="--i:2">
+                <i></i>
+                <i></i>
+                <span class="step-arrow"></span>
+                <span class="percentage">60%</span>
+                <span class="step-number">02</span>
+                <div class="step-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+            <div class="step" style="--i:3">
+                <i></i>
+                <i></i>
+                <span class="step-arrow"></span>
+                <span class="percentage">80%</span>
+                <span class="step-number">03</span>
+                <div class="step-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+
+            <div class="panels-container">
+                <div class="panel active">
+                    <div class="panel-header">
+                        <i class="fas fa-hourglass"></i>
+                        <h3>SSC</h3>
+                    </div>
+                    <p>Time management and planning phase</p>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Intermediate</h3>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>B-Tech</h3>
+                    </div>
+                    <p>Sri Sivani College Of Engineering <br> Artificial Inelligence & Machine Learning -2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

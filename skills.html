@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Skills Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+        
+.header {
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 15, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid #00c6ff;
+    color: var(--text-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.download-cv:hover {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+}
+
+/* Main content adjustments */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px; /* Add space for fixed header */
+}
+
+/* Skills grid adjustments */
+.skills-container {
+    margin-top: 2rem;
+}
+
+.skills-grid {
+    gap: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 2rem;
+    }
+    
+    .nav-links {
+        display: none; /* Add hamburger menu for mobile */
+    }
+    
+    .container {
+        padding-top: 80px;
+    }
+}
+         :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a23;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-glow: 0 0 15px rgba(32, 152, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-primary);
+            padding: 2rem;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .header1 h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: var(--accent-glow);
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        .header1 p {
+            color: var(--text-secondary);
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .skills-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-secondary);
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .skill-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(8px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .skill-item:hover .skill-icon::after {
+            opacity: 0.7;
+        }
+
+        .skill-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .percentage {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress {
+            height: 100%;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            position: relative;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: progressShine 2s infinite;
+        }
+
+        .visualization {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+            filter: drop-shadow(0 0 20px rgba(0, 198, 255, 0.3));
+        }
+
+        .visualization img {
+            width: 100%;
+            height: auto;
+            animation: floatImage 6s infinite ease-in-out;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px rgba(0, 198, 255, 0.5));
+            animation: floatIcon 4s infinite ease-in-out;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 198, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 198, 255, 0.8); }
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(2deg); }
+            75% { transform: translateY(10px) rotate(-2deg); }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10px, -10px) scale(1.1); }
+        }
+
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                flex-direction: column;
+            }
+            
+            .visualization {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="#blog">Education</a>
+            <a href="#contact">Contact</a>
+            <button class="download-cv">Download CV</button>
+        </nav>
+    </header>
+
+
+
+    <div class="container">
+        <div class="header1">
+            <h1>Technical Skills Profile</h1>
+            <p>Professional development and expertise visualization</p>
+        </div>
+
+        <div class="skills-container">
+            <div class="skills-grid">
+                <!-- HTML -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #E44D26;">
+                            <i class="fab fa-html5" style="color: white;"></i>
+                        </div>
+                        <div class="skill-title">HTML5</div>
+                        <div class="percentage">90%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%; background: #E44D26;"></div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #264DE4;">
+                            <i class="fab fa-css3-alt" style="color: white;"></i>
+                        </div>
+                        <div class="skill-title">CSS3</div>
+                        <div class="percentage">85%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%; background: #264DE4;"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #F7DF1E;">
+                            <i class="fab fa-js" style="color: black;"></i>
+                        </div>
+                        <div class="skill-title">JavaScript</div>
+                        <div class="percentage">80%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%; background: #F7DF1E;"></div>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #306998;">
+                            <i class="fab fa-python" style="color: white;"></i>
+                        </div>
+                        <div class="skill-title">Python</div>
+                        <div class="percentage">75%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%; background: #306998;"></div>
+                    </div>
+                </div>
+
+                <!-- SQL -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #00618A;">
+                            <i class="fas fa-database" style="color: white;"></i>
+                        </div>
+                        <div class="skill-title">SQL</div>
+                        <div class="percentage">85%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%; background: #00618A;"></div>
+                    </div>
+                </div>
+
+                <!-- PHP -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background: #777BB3;">
+                            <i class="fab fa-php" style="color: white;"></i>
+                        </div>
+                        <div class="skill-title">PHP</div>
+                        <div class="percentage">70%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%; background: #777BB3;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualization">
+                <img src="images/skill.png" alt="Creative Mind">
+                <div class="floating-elements" id="floatingElements"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation for skill bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+
+        // Create floating icons with controlled positioning
+        const createFloatingElements = () => {
+            const icons = ['⚡', '💻', '🔧', '⚙️', '📱', '💡'];
+            const floatingElements = document.getElementById('floatingElements');
+            
+            icons.forEach((icon, index) => {
+                const element = document.createElement('div');
+                element.className = 'floating-icon';
+                element.textContent = icon;
+                element.style.animationDelay = `${index * 0.2}s`;
+                
+                // Calculate position in a circle
+                const angle = (index / icons.length) * 2 * Math.PI;
+                const radius = 40; // Percentage of container size
+                const x = 50 + radius * Math.cos(angle);
+                const y = 50 + radius * Math.sin(angle);
+                
+                element.style.left = `${x}%`;
+                element.style.top = `${y}%`;
+                
+                floatingElements.appendChild(element);
+            });
+        };
+
+        createFloatingElements();
+
+
+        // Add this to your existing JavaScript
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

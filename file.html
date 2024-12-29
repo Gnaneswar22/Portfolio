@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Timeline Stairs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 1200px;
+            padding: 50px;
+            display: flex;
+            gap: 40px;
+            justify-content: flex-end;
+        }
+
+        /* Stairs Styling */
+        .stairs {
+            position: relative;
+            width: 450px;
+            height: 350px;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(25deg);
+        }
+
+        .stairs .base {
+            position: absolute;
+            top: 0;
+            left: 90px;
+            width: 270px;
+            height: 350px;
+            background: #1a1a2e;
+            transform: rotateX(90deg) translateZ(-175px) scale(1.25);
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        .stairs .step {
+            position: absolute;
+            bottom: 0;
+            left: calc(90px * var(--i));
+            width: 75px;
+            height: calc(100px * var(--i));
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        /* Updated colors for steps and panels to match */
+.stairs .step:nth-child(1)::before,
+.panel:nth-child(1) {
+    background: #4CAF50 !important;  /* Green for growth/starting */
+}
+
+.stairs .step:nth-child(2)::before,
+.panel:nth-child(2) {
+    background: #2196F3 !important;  /* Blue for progress */
+}
+
+.stairs .step:nth-child(3)::before,
+.panel:nth-child(3) {
+    background: #9C27B0 !important;  /* Purple for mastery */
+}
+
+/* Logo progression styling */
+.logo-progression {
+    position: absolute;
+    left: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    z-index: 2;
+}
+
+.logo-step {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.logo-step:hover {
+    transform: scale(1.1);
+}
+
+/* Update panel transitions to match steps */
+.panel {
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+}
+
+.panel:nth-child(1) { border-color: #4CAF50; }
+.panel:nth-child(2) { border-color: #2196F3; }
+.panel:nth-child(3) { border-color: #9C27B0; }
+
+/* Update step content to match panels */
+.step-content {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Update percentage indicators to match theme */
+.step-percentage {
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+}
+
+        .stairs .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90px;
+            height: 350px;
+            transform: rotateX(90deg) translateZ(175px);
+            transition: all 0.3s ease;
+        }
+
+        .stairs .step:nth-child(1)::before {
+            background: #3498db;
+        }
+
+        .stairs .step:nth-child(2)::before {
+            background: #00BFA5;
+        }
+
+        .stairs .step:nth-child(3)::before {
+            background: #FF5B7F;
+        }
+
+        .stairs .step::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 100px;
+            transform: rotateY(90deg) translateZ(-175px);
+            transition: all 0.3s ease;
+        }
+
+        .stairs .step:nth-child(1)::after {
+            background: #1abc9c;
+        }
+
+        .stairs .step:nth-child(2)::after {
+            background: #00A896;
+        }
+
+        .stairs .step:nth-child(3)::after {
+            background: #E64A6F;
+        }
+
+        .stairs .step i {
+            position: absolute;
+            display: block;
+            width: 90px;
+            height: 100%;
+            background: #FFFFFF;
+            transform-style: preserve-3d;
+        }
+        /* Top surface colors (::before) */
+        .stairs .step:nth-child(1)::before {
+    background: #FFFFFF !important;  /* Pure white */
+}
+
+.stairs .step:nth-child(2)::before {
+    background: #FFFFFF !important;  /* Pure white */
+}
+
+.stairs .step:nth-child(3)::before {
+    background: #F5F5F5 !important;  /* Light gray */
+}
+
+.stairs .step:nth-child(4)::before {
+    background: #EEEEEE !important;  /* Slightly darker gray */
+}
+
+/* Side colors (::after) */
+.stairs .step:nth-child(2)::after {
+    background: #E0E0E0;  /* Medium gray */
+}
+
+.stairs .step:nth-child(3)::after {
+    background: #D3D3D3;  /* Another medium gray */
+}
+
+.stairs .step:nth-child(4)::after {
+    background: #CCCCCC;  /* Slightly darker gray */
+}
+
+/* Front faces (i elements) */
+.stairs .step i {
+    background: #C0C0C0;  /* Standard gray */
+}
+
+/* Last step additional face */
+.stairs .step:last-child i:nth-child(2)::before {
+    background: #C0C0C0;  /* Match the front face color */
+}
+/* Stairs in grayscale */
+/* Top surface colors (::before) */
+.stairs .step:nth-child(2)::before {
+    background: #FFFFFF !important;  /* Pure white */
+}
+
+.stairs .step:nth-child(3)::before {
+    background: #F5F5F5 !important;  /* Light gray */
+}
+
+.stairs .step:nth-child(4)::before {
+    background: #EEEEEE !important;  /* Slightly darker gray */
+}
+
+/* Side colors (::after) */
+.stairs .step:nth-child(2)::after {
+    background: #E0E0E0;  /* Medium gray */
+}
+
+.stairs .step:nth-child(3)::after {
+    background: #D3D3D3;  /* Another medium gray */
+}
+
+.stairs .step:nth-child(4)::after {
+    background: #CCCCCC;  /* Slightly darker gray */
+}
+
+/* Front faces (i elements) */
+.stairs .step i {
+    background: #C0C0C0;  /* Standard gray */
+}
+
+/* Last step additional face */
+.stairs .step:last-child i:nth-child(2)::before {
+    background: #C0C0C0;  /* Match the front face color */
+}
+
+/* Marketing Panels - Keep original colors */
+.panel:nth-child(1) {
+    background: #00BFA5;  /* Teal */
+}
+
+.panel:nth-child(2) {
+    background: #2B3B4E;  /* Navy Blue */
+}
+
+.panel:nth-child(3) {
+    background: #FF5B7F;  /* Pink */
+}
+/* Top surface colors (::before) */
+.stairs .step:nth-child(2)::before {
+    background: #FFFFFF !important;  /* Pure white */
+}
+
+.stairs .step:nth-child(3)::before {
+    background: #F5F5F5 !important;  /* Light gray */
+}
+
+.stairs .step:nth-child(4)::before {
+    background: #EEEEEE !important;  /* Slightly darker gray */
+}
+
+.stairs .step:nth-child(5)::before {
+    background: #E8E8E8 !important;  /* Even darker gray */
+}
+
+.stairs .step:nth-child(6)::before {
+    background: #E0E0E0 !important;  /* Darkest gray */
+}
+
+/* Side colors (::after) */
+.stairs .step:nth-child(2)::after {
+    background: #E0E0E0;  /* Medium gray */
+}
+
+.stairs .step:nth-child(3)::after {
+    background: #D3D3D3;  /* Another medium gray */
+}
+
+.stairs .step:nth-child(4)::after {
+    background: #CCCCCC;  /* Slightly darker gray */
+}
+
+.stairs .step:nth-child(5)::after {
+    background: #C0C0C0;  /* Even darker gray */
+}
+
+.stairs .step:nth-child(6)::after {
+    background: #B8B8B8;  /* Darkest gray */
+}
+
+/* Front faces (i elements) */
+.stairs .step i {
+    background: #C0C0C0;  /* Standard gray */
+}
+
+.stairs .step:nth-child(5) i {
+    background: #B0B0B0;  /* Darker gray for 5th step */
+}
+
+.stairs .step:nth-child(6) i {
+    background: #A8A8A8;  /* Darkest gray for 6th step */
+}
+
+/* Last step additional face */
+.stairs .step:last-child i:nth-child(2)::before {
+    background: #A8A8A8;  /* Match the last step color */
+}
+/* Stairs base colors (white/gray parts) */
+.stairs .step {
+    background: #FFFFFF;  /* Pure white */
+}
+
+/* Colored portions of stairs */
+.stairs .step:nth-child(5)::before {
+    background: #00BFA5 !important;  /* Teal/Turquoise */
+}
+.stairs .step:nth-child(5)::before {
+    background: #00BFA5 !important;  /* Teal/Turquoise */
+}
+
+
+.stairs .step:nth-child(3)::before {
+    background: #2B3B4E !important;  /* Navy Blue */
+}
+
+.stairs .step:nth-child(4)::before {
+    background: #FF5B7F !important;  /* Pink/Coral */
+}
+.stairs .step:nth-child(2)::after {
+    background: #E0E0E0;  /* Medium gray */
+}
+
+.stairs .step:nth-child(3)::after {
+    background: #2B3B4E; 
+    align-items: center; /* Another medium gray */
+}
+
+.stairs .step:nth-child(4)::after {
+    background: #FF5B7F;  /* Slightly darker gray */
+}
+
+.stairs .step:nth-child(5)::after {
+    background: #00BFA5;  /* Even darker gray */
+}
+
+.stairs .step:nth-child(6)::after {
+    background: #B8B8B8;  /* Darkest gray */
+}
+
+/* Front faces (i elements) */
+.stairs .step i {
+    background: #C0C0C0;  /* Standard gray */
+}
+
+.stairs .step:nth-child(5) i {
+    background: #B0B0B0;  /* Darker gray for 5th step */
+}
+
+
+/* Panel headers maintain their colors */
+.panel-header {
+    color: white;
+}
+
+/* Panel icons maintain their colors */
+.panel-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+        .stairs .step i:nth-child(1) {
+            transform: translateZ(175px);
+            background: #FFFFFF;
+        }
+
+        .stairs .step i:nth-child(2) {
+            transform: translateZ(-175px);
+        }
+
+        .stairs .step i:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 100%;
+            background: inherit;
+            transform: rotateY(90deg) translate3d(-175px, 0, -135px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(176px);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .step-label {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(176px);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Arrow Container */
+        .arrow-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            transform-origin: left;
+        }
+
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid rgba(255, 255, 255, 0.5);
+            border-right: 2px solid rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+        }
+
+        .arrow:nth-child(1) {
+            bottom: 100px;
+            left: 120px;
+            width: 60px;
+            transform: rotate(45deg);
+        }
+
+        .arrow:nth-child(2) {
+            bottom: 180px;
+            left: 200px;
+            width: 80px;
+            transform: rotate(45deg);
+        }
+
+        .arrow:nth-child(3) {
+            bottom: 260px;
+            left: 280px;
+            width: 100px;
+            transform: rotate(45deg);
+        }
+
+        /* Panels Container */
+        .panels-container {
+            position: absolute;
+            left: -320px;
+            top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel {
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .panel.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Panel Colors */
+        .panel:nth-child(1) {
+            background: #00BFA5;
+        }
+
+        .panel:nth-child(2) {
+            background: #2B3B4E;
+        }
+
+        .panel:nth-child(3) {
+            background: #FF5B7F;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .panel-header i {
+            font-size: 1.5rem;
+        }
+
+        .panel-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .panel p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+ 
+        /* Add this to your CSS */
+.step-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(176px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-arrow::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Update your step number positioning */
+.step-number {
+    position: absolute;
+    bottom: 20px;  /* Adjust this value as needed */
+    left: 50%;
+    transform: translate(-50%, 0) translateZ(176px);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Add percentage indicator */
+.step-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(176px);
+    color: white;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stairs">
+            <div class="base"></div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+                <div class="arrow"></div>
+                <div class="arrow"></div>
+            </div>
+            <div class="step" style="--i:1">
+              <i></i>
+              <i></i>
+              <span class="step-arrow"></span>
+              <span class="step-percentage">40%</span>
+              <span class="step-number">1</span>
+              <span class="step-label">Planning</span>
+          </div>
+          <div class="step" style="--i:2">
+              <i></i>
+              <i></i>
+              <span class="step-arrow"></span>
+              <span class="step-percentage">60%</span>
+              <span class="step-number">2</span>
+              <span class="step-label">Strategy</span>
+          </div>
+          <div class="step" style="--i:3">
+              <i></i>
+              <i></i>
+              <span class="step-arrow"></span>
+              <span class="step-percentage">80%</span>
+              <span class="step-number">3</span>
+              <span class="step-label">Marketing</span>
+          </div>
+
+          <div class="logo-progression">
+            <img src="starter.png" alt="Starter Level" class="logo-step">
+            <img src="intermediate.png" alt="Intermediate Level" class="logo-step">
+            <img src="advanced.png" alt="Advanced Level" class="logo-step">
+        </div>
+          
+
+            <div class="panels-container">
+                <div class="panel">
+                    <div class="panel-header">
+                        <i class="fas fa-hourglass"></i>
+                        <h3>TIME</h3>
+                    </div>
+                    <p>Time management and planning phase</p>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>IDEAS</h3>
+                    </div>
+                    <p>Creative thinking and strategy development</p>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>TARGET MARKETING</h3>
+                    </div>
+                    <p>Market analysis and targeting strategy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+ 
+
+    </script>
+</body>
+</html>

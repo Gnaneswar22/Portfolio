@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2d2d3d; /* Match the background */
+    font-family: Arial, sans-serif;
+}
+
+.profile-container {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    background: url('paint-stroke.png') no-repeat center;
+    background-size: cover;
+    text-align: center;
+}
+
+.profile-content {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tool-icon {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.tool-icon.ai {
+    top: 10px;
+    left: 10px;
+    background-color: #ff9a00;
+}
+
+.tool-icon.ps {
+    top: 10px;
+    right: 10px;
+    background-color: #2a74ff;
+}
+
+.tool-icon.figma {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1abcfe;
+}
+
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="tool-icon ai">Ai</div>
+        <div class="tool-icon ps">Ps</div>
+        <div class="profile-image">
+            <img src="profile.jpg" alt="Profile Picture">
+        </div>
+        <div class="tool-icon figma">F</div>
+    </div>
+</body>
+</html>
