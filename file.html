@@ -3,140 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Timeline Steps</title>
+    <title>Your Portfolio</title>
     <style>
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 2rem;
-            min-height: 100vh;
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
         }
 
-        .timeline-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .info-panel {
-            width: 380px;
-            height: 100px;
-            padding: 20px;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* Header styles */
+        .header {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            opacity: 0;
-            animation: slideIn 0.8s ease forwards;
         }
 
-        @keyframes slideIn {
-            0% {
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .download-cv {
+            background: transparent;
+            border: 1px solid var(--accent-primary);
+            color: var(--text-primary);
+            padding: 0.6rem 1.8rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            /* Hamburger animation */
+            .hamburger.active span:first-child {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
                 opacity: 0;
-                transform: translateX(-100px);
             }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
+
+            .hamburger.active span:last-child {
+                transform: translateY(-9px) rotate(-45deg);
             }
-        }
-
-        /* Panel positioning */
-        .info-panel:nth-child(1) {
-            margin-top: 110px;
-            margin-left: 90px;
-            background: #00BFA5;
-            animation-delay: 0.3s;
-        }
-
-        .info-panel:nth-child(2) {
-            margin-top: -200px;
-            margin-left: 150px;
-            background: #2B3B4E;
-            animation-delay: 0.6s;
-        }
-
-        .info-panel:nth-child(3) {
-            margin-top: -200px;
-            margin-left: 250px;
-            background: #FF5B7F;
-            animation-delay: 0.9s;
-        }
-
-        .info-panel:nth-child(4) {
-            margin-top: -200px;
-            margin-left: 350px;
-            background: #00BFA5;
-            animation-delay: 1.2s;
-        }
-
-        .icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            font-size: 24px;
-        }
-
-        .panel-content {
-            flex: 1;
-        }
-
-        .panel-content h3 {
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-
-        .panel-content p {
-            font-size: 14px;
-            opacity: 0.9;
         }
     </style>
 </head>
 <body>
-    <div class="timeline-container">
-        <div class="info-panel">
-            <div class="icon">💰</div>
-            <div class="panel-content">
-                <h3>SUCCESS</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
         </div>
 
-        <div class="info-panel">
-            <div class="icon">🎯</div>
-            <div class="panel-content">
-                <h3>TARGET MARKETING</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-        <div class="info-panel">
-            <div class="icon">⚙️</div>
-            <div class="panel-content">
-                <h3>IDEAS</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html"><button class="download-cv">Download CV</button></a>
+        </nav>
+    </header>
 
-        <div class="info-panel">
-            <div class="icon">⌛</div>
-            <div class="panel-content">
-                <h3>TIME</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('show');
+                }
+            });
+
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

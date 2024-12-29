@@ -86,6 +86,63 @@ body {
     transform: translateY(-2px);
 }
 
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    /* Hamburger animation */
+    .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
 /* Domain Switcher Button */
 .domain-switcher {
     position: fixed;
