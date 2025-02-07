@@ -314,3 +314,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+// script.js - Optimized and Modular
+// Use Modern JavaScript Features
+const initApp = async () => {
+    try {
+        // Dynamic Imports
+        const { default: module } = await import('./module.js');
+        
+        // Efficient DOM Operations
+        const container = document.querySelector('.container');
+        const fragment = document.createDocumentFragment();
+        
+        // Batch DOM Updates
+        requestAnimationFrame(() => {
+            // DOM operations here
+            container.appendChild(fragment);
+        });
+        
+        // Use Intersection Observer for Lazy Loading
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        // Efficient Event Handling with Debounce
+        const debounce = (fn, delay) => {
+            let timeoutId;
+            return (...args) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => fn(...args), delay);
+            };
+        };
+        
+        // Event Delegation
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.button')) {
+                handleClick(e);
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error initializing app:', error);
+    }
+};
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}

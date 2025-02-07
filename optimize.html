@@ -1,0 +1,91 @@
+<!-- Index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character Encoding - Place early -->
+    <meta charset="UTF-8">
+    
+    <!-- Viewport Settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="logo.png" as="image">
+    <link rel="preload" href="critical-font.woff2" as="font" crossorigin>
+    
+    <!-- Preconnect to External Domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Include only critical CSS needed for above-the-fold content */
+        :root {
+            --primary-color: #ff4D4D;
+            --dark-bg: #2A2D3A;
+            --text-light: #ffffff;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--dark-bg);
+            color: var(--text-light);
+        }
+        
+        .header {
+            padding: 1rem;
+            background: rgba(42, 45, 58, 0.98);
+        }
+    </style>
+    
+    <!-- Defer Non-Critical CSS -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+          media="print" onload="this.media='all'">
+</head>
+<body>
+    <!-- Content -->
+    <header class="header">
+        <!-- Optimized Image with width/height -->
+        <img src="logo.png" alt="Logo" width="40" height="40" loading="eager">
+    </header>
+    
+    <!-- Lazy Load Images -->
+    <img src="placeholder.jpg" 
+         data-src="actual-image.jpg" 
+         alt="Description" 
+         loading="lazy" 
+         class="lazy">
+    
+    <!-- Defer Non-Critical JavaScript -->
+    <script defer src="script.js"></script>
+    
+    <!-- Inline Critical JavaScript -->
+    <script>
+        // Lazy Loading Images
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll("img.lazy");
+            
+            if ("IntersectionObserver" in window) {
+                const imageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove("lazy");
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(img) {
+                    imageObserver.observe(img);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

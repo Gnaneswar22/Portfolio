@@ -1,0 +1,36 @@
+/* styles.css - Minified and Optimized */
+/* Use CSS Custom Properties for frequently used values */
+:root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+}
+
+/* Use Modern CSS Features */
+@supports (display: grid) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Optimize Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate {
+    will-change: transform;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Use Content-Visibility for Off-Screen Content */
+.content-block {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
