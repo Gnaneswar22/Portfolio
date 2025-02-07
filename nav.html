@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+<style>    
+/* Root Variables */
+:root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+    /* Domain-specific Backgrounds */
+    --bg-designer: url('path-to-designer-bg.jpg');
+    --bg-developer: url('path-to-developer-bg.jpg');
+    --bg-uiux: url('path-to-uiux-bg.jpg');
+}
+
+/* Header */
+.header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(42, 45, 58, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 10%;
+        right: 0;
+        background: var(--dark-bg);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        text-align: center;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    /* Hamburger animation */
+    .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+@media (max-width: 480px) {
+    .hamburger {
+        display: flex;
+    }
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 40px;
+        left: 10%;
+        right: 0;
+        background: var(--dark-bg);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        text-align: center;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    /* Hamburger animation */
+    .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+</style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="certificates.html">Certifications</a>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html"><button class="download-cv">Download CV</button></a>
+        </nav>
+    </header>
+</body>
+</html>
