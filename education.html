@@ -41,8 +41,23 @@
             font-family: Arial, sans-serif;
           
         }
-        
-
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+        :root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+}
 /* Header */
 .header {
     padding: 1.5rem 4rem;
@@ -104,6 +119,133 @@
     background: var(--primary-color);
     transform: translateY(-2px);
 }
+
+        .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Width of the menu */
+    height: 100vh; /* Full height */
+    background: var(--darker-bg); /* Dark background */
+    flex-direction: column;
+    padding: 70px 0 1rem; /* Top padding to account for header */
+    gap: 2rem;
+    text-align: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+  }
+
+  /* Download CV button styling */
+  .nav-links a:last-child {
+    margin: 1rem 20px;
+  }
+
+  .download-cv {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active span:first-child {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .nav-links {
+    width: 100%; /* Full width for smaller devices */
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+  }
+}
+
+  
+
 
         .container {
             margin-top: 40px;
@@ -544,6 +686,268 @@
     height: auto;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);  /* Optional: adds shadow */
 }
+@media (max-width: 480px) {
+  
+  /* Stairs Container Adjustments */
+  .stairs {display: none;
+        transform: rotateX(-25deg) rotateY(30deg) scale(0.45);
+    margin-left: -100px;
+   
+  }
+
+  /* Timeline Logo */
+  .timeline-logo {
+    left: 20px;
+    top: 10px;
+    transform: scale(0.8);
+  }
+
+  /* Panels Container */
+  .panels-container {
+    transform: scale(0.6);
+    margin-top: -180px;
+    margin-left: -120px;
+  }
+
+  .panel {
+    width: 280px;
+    height: auto;
+    min-height: 90px;
+  }
+
+
+  /* Images Adjustments */
+  .success-icon {
+    top: -40px;
+    right: 10px;
+    transform: scale(0.6);
+  }
+
+  .success-icon img {
+    width: 80px;
+  }
+
+  .education-logo {
+    left: -20px;
+    top: 50%;
+    transform: scale(0.4);
+  }
+
+  .logo-image img {
+    width: 250px;
+  }
+
+  .school-icon {
+    right: 120px;
+    top: 180px;
+    transform: scale(0.5);
+  }
+
+  .school-icon img {
+    width: 120px;
+  }
+
+  /* Step Content */
+  .step-number {
+    font-size: 1.2rem;
+  }
+
+  .percentage {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+
+  /* Base Adjustments */
+  .stairs .base {
+    width: 200px;
+    height: 280px;
+    left: 70px;
+  }
+
+  /* Timeline Elements */
+  .timeline-logo span {
+    font-size: 0.9rem;
+  }
+
+  .logo-arrows {
+    gap: 3px;
+  }
+
+  .logo-arrow {
+    width: 15px;
+    height: 25px;
+  }
+
+  /* Panel Content */
+  .panel-header i {
+    font-size: 1.1rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
+  }
+
+  .panel p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  /* Animation Adjustments */
+  @keyframes floatIcon {
+    0% { transform: translateY(0) scale(0.6); }
+    50% { transform: translateY(-5px) scale(0.6); }
+    100% { transform: translateY(0) scale(0.6); }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+   
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hide stairs */
+  .stairs, .base {
+    display: none;
+  }
+
+  /* Graduate Image on Left */
+  .success-icon {
+    position: relative;
+    top: 0;
+    right: -100%;
+    transform: scale(0.8);
+    margin-bottom: 20px;
+  }
+
+  .success-icon img {
+    width: 400px;
+    animation: floatGraduate 3s ease-in-out infinite;
+  }
+
+  @keyframes floatGraduate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Panels Container */
+  .panels-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    right: 55%;
+  }
+
+  /* Larger Panels */
+  .panel {
+    width: 350px;
+    margin: 5px 0;
+    height: auto;
+    min-height: 70px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Reset panel positions */
+  .panel:nth-child(1),
+  .panel:nth-child(2),
+  .panel:nth-child(3) {
+    margin: 10px auto;
+    transform: none;
+  }
+
+  /* Panel Content */
+  .panel-header {
+    margin-bottom: 12px;
+  }
+
+  .panel-header i {
+    font-size: 1.4rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .panel p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  /* Timeline Logo */
+  .timeline-logo {
+    position: fixed;
+    left: 50px;
+    top: 10px;
+    transform: scale(1);
+  }
+
+  /* Education Image at Bottom */
+  .education-logo {
+    position: relative;
+    height: 500px;
+    left: 0;
+    top: 0;
+  
+   
+  }
+
+  .logo-image img {
+    display: none;
+    width: 700px;
+    animation: floatEducation 3s ease-in-out infinite;
+  }
+
+  @keyframes floatEducation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Remove school icon */
+  .school-icon {
+    display: none;
+  }
+
+  /* Panel Colors */
+  /* Panel colors */
+.panel:nth-child(1) { background: #00BFA5; }
+.panel:nth-child(2) { background: #2B3B4E; }
+.panel:nth-child(3) { background: #FF5B7F; }
+
+
+  /* Animation for panels */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .panel {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  .panel:nth-child(1) { animation-delay: 0.2s; }
+  .panel:nth-child(2) { animation-delay: 0.4s; }
+  .panel:nth-child(3) { animation-delay: 0.6s; }
+}
+
+
     </style>
 </head>
 <body>
@@ -551,13 +955,21 @@
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
+
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="aboutme.html">About</a>
             <a href="skills.html">Skills</a>
             <a href="education.html">Education</a>
+            <a href="certificate.html">Certifications</a>
             <a href="contact.html">Contact</a>
-            <a href="resume.html"> <button class="download-cv"> Download CV </button></a>  
+            <a href="resume.html"><button class="download-cv">Download CV</button></a>
         </nav>
     </header>
    
@@ -655,8 +1067,7 @@
             <p>Sri Sivani College Of Engineering <br> Artificial Inelligence & Machine Learning -2026</p>
         </div>
     </div>
-
-
-
+    
 </body>
+<script src="menu.js"></script>
 </html>

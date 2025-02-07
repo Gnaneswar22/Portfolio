@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licenses & Certifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --primary-color: #ff4D4D;
+            --dark-bg: #2A2D3A;
+            --darker-bg: #1E2028;
+            --text-light: #ffffff;
+            --text-gray: #B0B0B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(45, 27, 105, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(233, 75, 60, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .certification-container {
+           
+            max-width: 800px;
+            margin: 80px auto 20px;
+            padding: 24px;
+        }
+
+        h1 {
+            margin-top: 10%;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-primary), transparent);
+        }
+
+        .certification-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid rgba(233, 75, 60, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(233, 75, 60, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background-color: var(--darker-bg);
+            object-fit: cover;
+        }
+
+        .certification-details {
+            flex: 1;
+        }
+
+        .certification-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .issuer {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .issue-date, .credential-id {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .show-credential-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border: 1px solid var(--accent-primary);
+            border-radius: 25px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .show-credential-btn:hover {
+            background: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .show-credential-btn i {
+            margin-left: 8px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 768px) {
+            .certification-container {
+                padding: 16px;
+                margin: 60px auto 20px;
+            }
+
+            .certification-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #111827;
+            --accent-primary: #E94B3C;
+            --accent-secondary: #2D1B69;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+        :root {
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+}
+/* Header */
+.header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(42, 45, 58, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+        .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Width of the menu */
+    height: 100vh; /* Full height */
+    background: var(--darker-bg); /* Dark background */
+    flex-direction: column;
+    padding: 70px 0 1rem; /* Top padding to account for header */
+    gap: 2rem;
+    text-align: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+  }
+
+  /* Download CV button styling */
+  .nav-links a:last-child {
+    margin: 1rem 20px;
+  }
+
+  .download-cv {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active span:first-child {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .nav-links {
+    width: 100%; /* Full width for smaller devices */
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="certificate.html">Certifications</a>
+            <a href="contact.html">Contact</a>
+            <a href="resume.html"><button class="download-cv">Download CV</button></a>
+        </nav>
+    </header>
+    <div class="certification-container">
+        <h1>Licenses & certifications</h1>
+        <div class="certification-card">
+            <img src="images/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image">
+            <div class="certification-details">
+                <h2 class="certification-name">Introduction to Web Design and Development</h2>
+                <p class="issuer">Linked In</p>
+                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+                
+                <button class="show-credential-btn">
+                    Show credential
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="credentialModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <iframe id="credentialDocument" width="100%" height="500px" style="border: none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('credentialModal');
+        const btn = document.querySelector('.show-credential-btn');
+        const span = document.querySelector('.close-modal');
+        const iframe = document.getElementById('credentialDocument');
+
+        btn.onclick = function() {
+            modal.style.display = "flex";
+            // Replace 'path-to-your-credential.pdf' with actual credential document path
+            iframe.src = "images/CertificateOfCompletion_Introduction%20to%20Web%20Design%20and%20Development.pdf";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            iframe.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                iframe.src = "";
+            }
+        }
+
+        // Optional: Add animation when cards appear
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.certification-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+    <script src="menu.js"></script>
+</body>
+</html>

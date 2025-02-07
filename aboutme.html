@@ -52,6 +52,193 @@
             pointer-events: none;
         }
 
+/* Header */
+.header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(42, 45, 58, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+        .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cv:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Width of the menu */
+    height: 100vh; /* Full height */
+    background: var(--darker-bg); /* Dark background */
+    flex-direction: column;
+    padding: 70px 0 1rem; /* Top padding to account for header */
+    gap: 2rem;
+    text-align: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+  }
+
+  /* Download CV button styling */
+  .nav-links a:last-child {
+    margin: 1rem 20px;
+  }
+
+  .download-cv {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active span:first-child {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .nav-links {
+    width: 100%; /* Full width for smaller devices */
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+  }
+}
+
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -215,68 +402,6 @@
         }
 
 
-
-        .header {
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(42, 45, 58, 0.98);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.logo img {
-    width: 40px;
-    height: 40px;
-}
-
-.logo span {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.download-cv {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--text-light);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.download-cv:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
-
     </style>
 </head>
 <body>
@@ -285,16 +410,23 @@
     <div class="logo">
         <img src="logo.png" alt="Logo">
     </div>
+
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="aboutme.html">About</a>
         <a href="skills.html">Skills</a>
         <a href="education.html">Education</a>
+        <a href="certificate.html">Certifications</a>
         <a href="contact.html">Contact</a>
-        <a href="resume.html"> <button class="download-cv"> Download CV </button></a>
+        <a href="resume.html"><button class="download-cv">Download CV</button></a>
     </nav>
 </header>
-
     <!-- Add particles container -->
     <div class="particles"></div>
 
@@ -372,5 +504,6 @@
         // Initialize particles
         createParticles();
     </script>
+    <script src="menu.js"></script>
 </body>
 </html>
