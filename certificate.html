@@ -431,7 +431,7 @@
     <div class="certification-container">
         <h1>Licenses & certifications</h1>
         <div class="certification-card">
-            <img src="images/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <img src="images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
             <div class="certification-details">
                 <h2 class="certification-name">Introduction to Web Design and Development</h2>
                 <p class="issuer">Linked In</p>
@@ -443,6 +443,36 @@
                 </button>
             </div>
         </div>
+
+        
+
+        <div class="certification-card">
+            <img src="images/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <div class="certification-details">
+                <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+                <p class="issuer">Linked In</p>
+                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+                
+                <button class="show-credential-btn">
+                    Show credential
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div>
+        <div class="certification-card">
+            <img src="images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <div class="certification-details">
+                <h2 class="certification-name">Introduction to Web Design and Development</h2>
+                <p class="issuer">Linked In</p>
+                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+                
+                <button class="show-credential-btn">
+                    Show credential
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div>
+
     </div>
 
     <!-- Modal -->
@@ -463,8 +493,14 @@
         btn.onclick = function() {
             modal.style.display = "flex";
             // Replace 'path-to-your-credential.pdf' with actual credential document path
-            iframe.src = "images/CertificateOfCompletion_Introduction%20to%20Web%20Design%20and%20Development.pdf";
+            iframe.src = "images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.pdf";
         }
+        btn.onclick = function() {
+            modal.style.display = "flex";
+            // Replace 'path-to-your-credential.pdf' with actual credential document path
+            iframe.src = "images/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf";
+        }
+
 
         span.onclick = function() {
             modal.style.display = "none";
