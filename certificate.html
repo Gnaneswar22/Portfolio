@@ -1,532 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licenses & Certifications</title>
-    <link rel="stylesheet" href="optimize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-primary: #0a0d14;
-            --bg-secondary: #111827;
-            --accent-primary: #E94B3C;
-            --accent-secondary: #2D1B69;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --primary-color: #ff4D4D;
-            --dark-bg: #2A2D3A;
-            --darker-bg: #1E2028;
-            --text-light: #ffffff;
-            --text-gray: #B0B0B0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licenses & Certifications</title>
+  <link rel="stylesheet" href="optimize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #111827;
+      --accent-primary: #E94B3C;
+      --accent-secondary: #2D1B69;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --primary-color: #ff4D4D;
+      --accent-green: #4CAF50;
+      --dark-bg: #2A2D3A;
+      --darker-bg: #1E2028;
+      --text-light: #ffffff;
+      --text-gray: #B0B0B0;
+      --text-gold: #FFD700;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-        }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
 
-        /* Animated background effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(45, 27, 105, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(233, 75, 60, 0.1) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-        }
+    /* Animated background effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(45, 27, 105, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(233, 75, 60, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        .certification-container {
-           
-            max-width: 800px;
-            margin: 80px auto 20px;
-            padding: 24px;
-        }
+    /* Header Styles */
+    .header {
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(42, 45, 58, 0.98);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
 
-        h1 {
-            margin-top: 10%;
-            font-size: 2.5rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent-primary), transparent);
-        }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
 
-        .certification-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            border: 1px solid rgba(233, 75, 60, 0.1);
-            transition: all 0.3s ease;
-        }
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
 
-        .certification-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(233, 75, 60, 0.3);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
 
-        .badge-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            background-color: var(--darker-bg);
-            object-fit: cover;
-        }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
 
-        .certification-details {
-            flex: 1;
-        }
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
 
-        .certification-name {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-light);
-            margin-bottom: 8px;
-        }
+    .download-cv {
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--text-light);
+      padding: 0.6rem 1.8rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
 
-        .issuer {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
+    .download-cv:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+    }
 
-        .issue-date, .credential-id {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-bottom: 8px;
-        }
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1000;
+    }
 
-        .show-credential-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            border: 1px solid var(--accent-primary);
-            border-radius: 25px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: transparent;
-        }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-light);
+      transition: all 0.3s ease;
+    }
 
-        .show-credential-btn:hover {
-            background: var(--accent-primary);
-            transform: translateY(-2px);
-        }
+    /* Mobile Navigation Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100vh;
+        background: var(--darker-bg);
+        flex-direction: column;
+        padding: 70px 0 1rem;
+        gap: 2rem;
+        text-align: center;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        .show-credential-btn i {
-            margin-left: 8px;
-        }
+      .nav-links.show {
+        display: flex;
+      }
 
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
+      .nav-links a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.2rem;
+        color: var(--text-light);
+        transition: all 0.3s ease;
+      }
 
-        .modal-content {
-            background: var(--bg-secondary);
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 90%;
-            max-height: 90%;
-            overflow: auto;
-        }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--primary-color);
+      }
 
-        .close-modal {
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-gray);
-        }
+      .nav-links a:last-child {
+        margin: 1rem 20px;
+      }
 
-        @media (max-width: 768px) {
-            .certification-container {
-                padding: 16px;
-                margin: 60px auto 20px;
-            }
+      .download-cv {
+        width: 100%;
+        margin: 0 auto;
+      }
 
-            .certification-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+      /* Hamburger animation */
+      .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+    }
 
-            h1 {
-                font-size: 2rem;
-            }
+    @media (max-width: 480px) {
+      .nav-links {
+        width: 100%;
+      }
+      
+      .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.8rem 0;
+      }
+    }
 
-            h1::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
+    /* Certifications Container */
+    .certification-container {
+      max-width: 800px;
+      margin: 40px auto 20px;
+      padding: 24px;
+      /* Top margin pushed down to account for fixed header */
+      margin-top: 120px;
+    }
 
-        :root {
-            --bg-primary: #0a0d14;
-            --bg-secondary: #111827;
-            --accent-primary: #E94B3C;
-            --accent-secondary: #2D1B69;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-        }
-        :root {
-    --primary-color: #ff4D4D;
-    --accent-green: #4CAF50;
-    --dark-bg: #2A2D3A;
-    --darker-bg: #1E2028;
-    --text-light: #ffffff;
-    --text-gray: #B0B0B0;
-    --text-gold: #FFD700;
-}
-/* Header */
-.header {
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(42, 45, 58, 0.98);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
+    h1 {
+      font-size: 2.5rem;
+      color: var(--text-light);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-primary), transparent);
+    }
 
-.logo img {
-    width: 40px;
-    height: 40px;
-}
+    .certification-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 1px solid rgba(233, 75, 60, 0.1);
+      transition: all 0.3s ease;
+    }
 
-.logo span {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
+    .certification-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(233, 75, 60, 0.3);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
 
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
+    .badge-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      background-color: var(--darker-bg);
+      object-fit: cover;
+    }
 
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
+    .certification-details {
+        padding-left: 5%;
+      flex: 1;
+    }
 
-.nav-links a:hover {
-    color: var(--primary-color);
-}
+    .certification-name {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
 
-.download-cv {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--text-light);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
+    .issuer {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
 
-.download-cv:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
+    .issue-date,
+    .credential-id {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      margin-bottom: 8px;
+    }
 
-        .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
+    .show-credential-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border: 1px solid var(--accent-primary);
+      border-radius: 25px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+    }
 
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
+    .show-credential-btn:hover {
+      background: var(--accent-primary);
+      transform: translateY(-2px);
+    }
 
-.nav-links a:hover {
-    color: var(--primary-color);
-}
+    .show-credential-btn i {
+      margin-left: 8px;
+    }
 
-.download-cv {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--text-light);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
 
-.download-cv:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
+    .modal-content {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 100%;
+      max-height: 90%;
+      overflow: auto;
+      position: relative;
+    }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 1000;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-light);
-    transition: all 0.3s ease;
-}
-
-/* Mobile Navigation Styles */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-  
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px; /* Width of the menu */
-    height: 100vh; /* Full height */
-    background: var(--darker-bg); /* Dark background */
-    flex-direction: column;
-    padding: 70px 0 1rem; /* Top padding to account for header */
-    gap: 2rem;
-    text-align: center;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links a {
-    display: block;
-    padding: 1rem 0;
-    font-size: 1.2rem;
-    color: var(--text-light);
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--primary-color);
-  }
-
-  /* Download CV button styling */
-  .nav-links a:last-child {
-    margin: 1rem 20px;
-  }
-
-  .download-cv {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* Hamburger animation */
-  .hamburger.active span:first-child {
-    transform: translateY(9px) rotate(45deg);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:last-child {
-    transform: translateY(-9px) rotate(-45deg);
-  }
+    .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-gray);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Extra small devices */
+/* On hover, animate with rotation and scaling, and change color */
+.close-modal:hover {
+  transform: rotate(90deg) scale(1);
+  color: var(--accent-primary);
+ 
+ 
+}
+
+
+
+    /* Increase modal content width */
+.modal-content {
+  margin-top: 5%;
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  width: 70vw;         /* Use 80% of the viewport width */
+  max-width: 900px;   /* Limit the width */
+  max-height: 80vh;    /* Use 90% of viewport height */
+  overflow: auto;
+  position: relative;
+  margin: auto;        /* Centers the modal horizontally */
+}
+
+/* Adjust iframe size if needed */
+#credentialDocument {
+  width: 100%;
+  height: 70vh;        /* Increase the iframe height */
+  border: none;
+}
 @media (max-width: 480px) {
-  .nav-links {
-    width: 100%; /* Full width for smaller devices */
+  .modal-content {
+    width: 95vw;        /* 95% of mobile viewport width */
+    height: 95vh;       /* 95% of mobile viewport height */
+    padding: 10px;
+    border-radius: 8px;
   }
-  
-  .nav-links a {
-    font-size: 1.1rem;
-    padding: 0.8rem 0;
+
+  .close-modal {
+    top: 5px;
+    right: 10px;
+    font-size: 1.2rem;
   }
 }
-
-    </style>
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      
+    </div>
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="certificate.html">Certifications</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.html"><button class="download-cv">Download CV</button></a>
+    </nav>
+  </header>
 
-        <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+  <div class="certification-container">
+    <h1>Licenses & Certifications</h1>
+
+ 
+
+    <!-- first Certificate Card -->
+    <div class="certification-card">
+      <img src="images\certificates\CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+      <div class="certification-details">
+        <h2 class="certification-name">Introduction to Web Design and Development</h2>
+        <p class="issuer">Udemy</p>
+        <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+        <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Introduction to Web Design and Development.pdf"   id="credentialDocument ">
+          Show credential
+          <i class="fas fa-external-link-alt"></i>
         </button>
-
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="aboutme.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="education.html">Education</a>
-            <a href="certificate.html">Certifications</a>
-            <a href="contact.html">Contact</a>
-            <a href="resume.html"><button class="download-cv">Download CV</button></a>
-        </nav>
-    </header>
-    <div class="certification-container">
-        <h1>Licenses & certifications</h1>
-        <div class="certification-card">
-            <img src="images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
-            <div class="certification-details">
-                <h2 class="certification-name">Introduction to Web Design and Development</h2>
-                <p class="issuer">Linked In</p>
-                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
-                
-                <button class="show-credential-btn">
-                    Show credential
-                    <i class="fas fa-external-link-alt"></i>
-                </button>
-            </div>
-        </div>
-
-        
-
-        <div class="certification-card">
-            <img src="images/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
-            <div class="certification-details">
-                <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
-                <p class="issuer">Linked In</p>
-                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
-                
-                <button class="show-credential-btn">
-                    Show credential
-                    <i class="fas fa-external-link-alt"></i>
-                </button>
-            </div>
-        </div>
-        <div class="certification-card">
-            <img src="images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
-            <div class="certification-details">
-                <h2 class="certification-name">Introduction to Web Design and Development</h2>
-                <p class="issuer">Linked In</p>
-                <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
-                
-                <button class="show-credential-btn">
-                    Show credential
-                    <i class="fas fa-external-link-alt"></i>
-                </button>
-            </div>
-        </div>
-
+      </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal" id="credentialModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <iframe id="credentialDocument" width="100%" height="500px" style="border: none;"></iframe>
+     
+       <!-- second Certificate Card -->
+       <div class="certification-card">
+        <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+        <div class="certification-details">
+          <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+          <p class="issuer">LinkedIn</p>
+          <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+          <!-- The data-credential attribute holds the path to the certificate document -->
+          <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+            Show credential
+            <i class="fas fa-external-link-alt"></i>
+          </button>
         </div>
+      </div>
+
+
+        <!-- third Certificate Card -->
+        <div class="certification-card">
+            <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <div class="certification-details">
+            <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+            <p class="issuer">LinkedIn</p>
+            <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+            <!-- The data-credential attribute holds the path to the certificate document -->
+            <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+                Show credential
+                <i class="fas fa-external-link-alt"></i>
+            </button>
+            </div>
+        </div>
+
+                 <!--fourth Certificate Card -->
+        <div class="certification-card">
+            <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <div class="certification-details">
+            <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+            <p class="issuer">LinkedIn</p>
+            <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+            <!-- The data-credential attribute holds the path to the certificate document -->
+            <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+                Show credential
+                <i class="fas fa-external-link-alt"></i>
+            </button>
+            </div>
+        </div>
+
+                  <!--fifth Certificate Card -->
+                  <div class="certification-card">
+                    <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+                    <div class="certification-details">
+                    <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+                    <p class="issuer">LinkedIn</p>
+                    <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
+                    <!-- The data-credential attribute holds the path to the certificate document -->
+                    <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+                        Show credential
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                    </div>
+                </div>
+   
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="credentialModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <iframe id="credentialDocument" width="100%" height="500px" style="border: none;"></iframe>
     </div>
+  </div>
 
-    <script>
-        // Modal functionality
-        const modal = document.getElementById('credentialModal');
-        const btn = document.querySelector('.show-credential-btn');
-        const span = document.querySelector('.close-modal');
-        const iframe = document.getElementById('credentialDocument');
+  <script>
+    // Modal functionality with event delegation for multiple certificates
+    const modal = document.getElementById('credentialModal');
+    const iframe = document.getElementById('credentialDocument');
+    const closeModal = document.querySelector('.close-modal');
+    const credentialButtons = document.querySelectorAll('.show-credential-btn');
+    
+    credentialButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const credentialSrc = btn.getAttribute('data-credential');
+        iframe.src = credentialSrc;
+        modal.style.display = "flex";
+      });
+    });
+    
+    closeModal.addEventListener('click', function() {
+      modal.style.display = "none";
+      iframe.src = "";
+    });
+    
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        iframe.src = "";
+      }
+    });
+    
+    // Optional: Animate certificate cards on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.certification-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
 
-        btn.onclick = function() {
-            modal.style.display = "flex";
-            // Replace 'path-to-your-credential.pdf' with actual credential document path
-            iframe.src = "images/certificates/CertificateOfCompletion_Introduction to Web Design and Development.pdf";
-        }
-        btn.onclick = function() {
-            modal.style.display = "flex";
-            // Replace 'path-to-your-credential.pdf' with actual credential document path
-            iframe.src = "images/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf";
-        }
 
 
-        span.onclick = function() {
-            modal.style.display = "none";
-            iframe.src = "";
-        }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                iframe.src = "";
-            }
-        }
 
-        // Optional: Add animation when cards appear
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.certification-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100 * index);
-            });
-        });
-    </script>
-    <script src="menu.js"></script>
+
+
+
+ddd
+// Open modal and load PDF on click for both desktop and mobile
+credentialButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const credentialSrc = btn.getAttribute('data-credential');
+    iframe.src = credentialSrc;
+    modal.style.display = 'flex';
+  });
+});
+
+// Close modal when clicking the close button
+closeModal.addEventListener('click', function() {
+  modal.style.display = 'none';
+  iframe.src = '';
+});
+
+// Also close modal when clicking outside the modal content
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+    iframe.src = '';
+  }
+});
+
+
+  </script>
+  
+  <script src="menu.js"></script>
 </body>
 </html>
