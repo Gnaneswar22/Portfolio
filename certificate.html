@@ -385,8 +385,6 @@
     font-size: 1.2rem;
   }
 }
-
-
 /* Updated Modal Styles */
 .modal {
     display: none;
@@ -403,19 +401,18 @@
 
 .modal-content {
     background: var(--bg-secondary);
-    padding: 20px;
-    border-radius: 12px;
-    width: 90vw;
+    width: 90%;
     height: 90vh;
-    max-width: 1200px;
     position: relative;
     margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-.pdf-viewer {
+.pdf-container {
     width: 100%;
-    height: calc(100% - 40px);
-    overflow: hidden;
+    height: 100%;
+    background: white;
 }
 
 #credentialDocument {
@@ -424,46 +421,34 @@
     border: none;
 }
 
-.pdf-fallback {
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    text-align: center;
-    padding: 20px;
-    color: var(--text-light);
-}
-
-.view-pdf-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    margin-top: 15px;
-    background: var(--accent-primary);
-    color: var(--text-light);
-    text-decoration: none;
-    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1002;
     transition: all 0.3s ease;
 }
 
-.view-pdf-btn:hover {
-    background: var(--accent-secondary);
-    transform: translateY(-2px);
-}
-
-/* Mobile Specific Styles */
+/* Mobile adjustments */
 @media (max-width: 768px) {
     .modal-content {
-        width: 95vw;
-        height: 95vh;
-        padding: 15px;
-        margin: 10px auto;
-    }
-
-    .pdf-viewer {
-        height: calc(100% - 30px);
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
     }
 }
+
 
   </style>
 </head>
@@ -526,13 +511,13 @@
 
         <!-- third Certificate Card -->
         <div class="certification-card">
-            <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <img src="images\certificates\udemy_phpwithmysql.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
             <div class="certification-details">
-            <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
-            <p class="issuer">LinkedIn</p>
+            <h2 class="certification-name">Php With ysql</h2>
+            <p class="issuer">UDEMY</p>
             <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
             <!-- The data-credential attribute holds the path to the certificate document -->
-            <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+            <button class="show-credential-btn" data-credential="images\certificates\udemy_phpwithmysql.pdf">
                 Show credential
                 <i class="fas fa-external-link-alt"></i>
             </button>
@@ -541,13 +526,13 @@
 
                  <!--fourth Certificate Card -->
         <div class="certification-card">
-            <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+            <img src="images\certificates\AWS Skill Builder Course Completion Certificate.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
             <div class="certification-details">
-            <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+            <h2 class="certification-name">PROMPT ENGINEERING</h2>
             <p class="issuer">LinkedIn</p>
             <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
             <!-- The data-credential attribute holds the path to the certificate document -->
-            <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+            <button class="show-credential-btn" data-credential="images\certificates\AWS Skill Builder Course Completion Certificate.pdf">
                 Show credential
                 <i class="fas fa-external-link-alt"></i>
             </button>
@@ -556,13 +541,13 @@
 
                   <!--fifth Certificate Card -->
                   <div class="certification-card">
-                    <img src="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
+                    <img src="images\certificates\udemy_python (1).jpg" alt="Certificate Badge" class="badge-image" loading="lazy">
                     <div class="certification-details">
-                    <h2 class="certification-name">Getting Started as a FullStack Web Developer</h2>
+                    <h2 class="certification-name">PYTHON</h2>
                     <p class="issuer">LinkedIn</p>
                     <p class="issue-date">Issued Feb 2025 · No Expiration Date</p>
                     <!-- The data-credential attribute holds the path to the certificate document -->
-                    <button class="show-credential-btn" data-credential="images\certificates\CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf">
+                    <button class="show-credential-btn" data-credential="images\certificates\udemy_python.pdf">
                         Show credential
                         <i class="fas fa-external-link-alt"></i>
                     </button>
@@ -572,65 +557,101 @@
 
   </div>
 
- <!-- Modal -->
+<!-- Modal -->
 <div class="modal" id="credentialModal">
   <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <div class="pdf-viewer">
-          <!-- Primary PDF viewer -->
-          <object 
-              id="credentialDocument" 
-              type="application/pdf" 
-              width="100%" 
-              height="100%">
-              <!-- Fallback for mobile -->
-              <div class="pdf-fallback">
-                  <p>Your device may not support embedded PDFs.</p>
-                  <a id="download-link" href="" target="_blank" class="view-pdf-btn">
-                      View PDF
-                  </a>
-              </div>
-          </object>
+      <div class="pdf-container">
+          <embed 
+              id="credentialDocument"
+              type="application/pdf"
+              width="100%"
+              height="100%"
+          >
       </div>
   </div>
 </div>
 
 
   <script>
+
+// Function to create certificate cards
+function createCertificateCards() {
+    const container = document.querySelector('.certification-container');
+    
+    Object.values(certificateData).forEach(cert => {
+        const card = `
+            <div class="certification-card">
+                <img src="${cert.imagePath}" alt="Certificate Badge" class="badge-image" loading="lazy">
+                <div class="certification-details">
+                    <h2 class="certification-name">${cert.title}</h2>
+                    <p class="issuer">${cert.issuer}</p>
+                    <p class="issue-date">Issued ${cert.date} · No Expiration Date</p>
+                    <button class="show-credential-btn" data-credential="${cert.pdfPath}">
+                        Show credential
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', card);
+    });
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    createCertificateCards();
+    
+    // Your existing modal code here
+    const modal = document.getElementById('credentialModal');
+    const iframe = document.getElementById('credentialDocument');
+    // ... rest of your modal code
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('credentialModal');
-    const pdfObject = document.getElementById('credentialDocument');
-    const downloadLink = document.getElementById('download-link');
+    const pdfViewer = document.getElementById('credentialDocument');
     const closeModal = document.querySelector('.close-modal');
     const credentialButtons = document.querySelectorAll('.show-credential-btn');
 
     credentialButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const credentialSrc = btn.getAttribute('data-credential');
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // Set both the object data and download link
-            pdfObject.setAttribute('data', credentialSrc);
-            downloadLink.setAttribute('href', credentialSrc);
+            // Get PDF path and format it
+            let pdfPath = this.getAttribute('data-credential');
+            pdfPath = pdfPath.replace(/\\/g, '/'); // Replace backslashes with forward slashes
             
+            // Log for debugging
+            console.log('Opening PDF:', pdfPath);
+
+            // Use absolute path
+            const absolutePath = window.location.origin + '/' + pdfPath;
+            console.log('Absolute path:', absolutePath);
+
+            // Set the PDF source
+            pdfViewer.setAttribute('src', absolutePath);
+            
+            // Show modal
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
     });
 
+    // Close modal handlers
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
-        pdfObject.setAttribute('data', '');
+        pdfViewer.setAttribute('src', '');
+        document.body.style.overflow = 'auto';
     });
 
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = 'none';
-            pdfObject.setAttribute('data', '');
+            pdfViewer.setAttribute('src', '');
+            document.body.style.overflow = 'auto';
         }
-    });
-
-    // Prevent modal from closing when clicking inside modal content
-    document.querySelector('.modal-content').addEventListener('click', function(event) {
-        event.stopPropagation();
     });
 });
 
