@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css\menu.css">
     <link rel="stylesheet" href="optimize.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -190,71 +189,115 @@
     </div>
 </section>
 
-<!-- Projects Section -->
-<section class="projects-section">
-    <!-- Designer Projects -->
-    <div class="project-content designer-projects active">
-        <h2 class="section-title">My Design Projects</h2>
-        <div class="project-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Branding</button>
-            <button class="filter-btn">UI Design</button>
-            <button class="filter-btn">Logo Design</button>
-        </div>
-        <div class="projects-grid">
-            <div class="project-item">
-                <img src="images/design1.jpg" alt="Brand Design"loading="lazy">
-                <div class="project-overlay">
-                    <h3>Brand Identity Design</h3>
-                    <p>Logo & Brand Guidelines</p>
+        <!-- Projects Section -->
+        <section class="projects-section">
+            
+            
+       
+            
+            
+            <!-- Designer Projects -->
+            <div class="project-content designer-projects active">
+                <h2 class="section-title">My Design Projects</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                    <button class="filter-btn" data-filter="ui-design">UI Design</button>
+                    <button class="filter-btn" data-filter="logo-design">Logo Design</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-item" data-category="branding">
+                        <img src="images/design1.jpg" alt="Brand Design" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Brand Identity Design</h3>
+                            <p>Logo & Brand Guidelines</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="ui-design">
+                        <img src="images/design2.jpg" alt="UI Design" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Dashboard UI Design</h3>
+                            <p>Admin Panel Interface</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="logo-design">
+                        <img src="images/design3.jpg" alt="Logo Design" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Minimalist Logo Collection</h3>
+                            <p>Corporate Identity Design</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Add more designer projects -->
-        </div>
-    </div>
 
-    <!-- Developer Projects -->
-    <div class="project-content developer-projects">
-        <h2 class="section-title">My Development Projects</h2>
-        <div class="project-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Web Apps</button>
-            <button class="filter-btn">Mobile Apps</button>
-            <button class="filter-btn">Full Stack</button>
-        </div>
-        <div class="projects-grid">
-            <div class="project-item">
-                <img src="images/dev1.jpg" alt="Web App"loading="lazy">
-                <div class="project-overlay">
-                    <h3>E-Commerce Platform</h3>
-                    <p>Full Stack Development</p>
+            <!-- Developer Projects -->
+            <div class="project-content developer-projects">
+                <h2 class="section-title">My Development Projects</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web-apps">Web Apps</button>
+                    <button class="filter-btn" data-filter="mobile-apps">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="full-stack">Full Stack</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-item" data-category="full-stack">
+                        <img src="images/dev1.jpg" alt="Web App" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Srikakulam Police Department Portal</h3>
+                            <p>Full Stack Web Application</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="web-apps">
+                        <img src="images/dev2.jpg" alt="Web App" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Sri Sivani College Portal</h3>
+                            <p>Web Application</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="full-stack">
+                        <img src="images/dev3.jpg" alt="Hackathon Project" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>SDG Goal 14 Solution</h3>
+                            <p>Hackathon Winner Project</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Add more developer projects -->
-        </div>
-    </div>
 
-    <!-- UI/UX Projects -->
-    <div class="project-content uiux-projects">
-        <h2 class="section-title">My UI/UX Projects</h2>
-        <div class="project-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Mobile UI</button>
-            <button class="filter-btn">Web UI</button>
-            <button class="filter-btn">Prototypes</button>
-        </div>
-        <div class="projects-grid">
-            <div class="project-item">
-                <img src="images/uiux1.jpg" alt="Mobile App Design"loading="lazy">
-                <div class="project-overlay">
-                    <h3>Finance App Design</h3>
-                    <p>Mobile UI/UX</p>
+            <!-- UI/UX Projects -->
+            <div class="project-content uiux-projects">
+                <h2 class="section-title">My UI/UX Projects</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="mobile-ui">Mobile UI</button>
+                    <button class="filter-btn" data-filter="web-ui">Web UI</button>
+                    <button class="filter-btn" data-filter="prototypes">Prototypes</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-item" data-category="mobile-ui">
+                        <img src="images/uiux1.jpg" alt="Mobile App Design" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Finance App Design</h3>
+                            <p>Mobile UI/UX</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="web-ui">
+                        <img src="images/uiux2.jpg" alt="Web UI Design" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>E-Learning Platform</h3>
+                            <p>Web UI/UX Design</p>
+                        </div>
+                    </div>
+                    <div class="project-item" data-category="prototypes">
+                        <img src="images/uiux3.jpg" alt="Interactive Prototype" loading="lazy">
+                        <div class="project-overlay">
+                            <h3>Smart Home App</h3>
+                            <p>Interactive Prototype</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Add more UI/UX projects -->
-        </div>
-    </div>
-</section>
+        </section>
 
 <!-- Footer Section -->
 <footer class="footer">

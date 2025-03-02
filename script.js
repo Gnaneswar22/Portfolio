@@ -370,3 +370,58 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
+
+        // JavaScript for the interactive project tabs and filters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const projectContents = document.querySelectorAll('.project-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    btn.classList.add('active');
+                    
+                    // Hide all content
+                    projectContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show corresponding content
+                    const target = btn.getAttribute('data-target');
+                    document.querySelector(`.${target}`).classList.add('active');
+                });
+            });
+            
+            // Filter functionality for each project category
+            const projectSections = document.querySelectorAll('.project-content');
+            
+            projectSections.forEach(section => {
+                const filterBtns = section.querySelectorAll('.filter-btn');
+                const projectItems = section.querySelectorAll('.project-item');
+                
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remove active class from all filter buttons in this section
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        btn.classList.add('active');
+                        
+                        const filter = btn.getAttribute('data-filter');
+                        
+                        // Show/hide projects based on filter
+                        projectItems.forEach(item => {
+                            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            });
+        });
