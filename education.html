@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Timeline Stairs</title>
+    <title>Education</title>
     <link rel="stylesheet" href="optimize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -171,6 +171,78 @@
     height: 3px;
     background-color: var(--text-light);
     transition: all 0.3s ease;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-secondary);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 10px 0;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-menu a {
+    color: var(--text-light);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Mobile adjustments for dropdown */
+@media (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background: var(--darker-bg);
+        padding: 0 0 0 20px;
+    }
+
+    .dropdown-toggle {
+        padding: 1rem 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.8rem 0;
+        font-size: 1.2rem;
+    }
 }
 
 /* Mobile Navigation Styles */
@@ -947,7 +1019,77 @@
   .panel:nth-child(2) { animation-delay: 0.4s; }
   .panel:nth-child(3) { animation-delay: 0.6s; }
 }
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-secondary);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 10px 0;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-menu a {
+    color: var(--text-light);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Mobile adjustments for dropdown */
+@media (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background: var(--darker-bg);
+        padding: 0 0 0 20px;
+    }
+
+    .dropdown-toggle {
+        padding: 1rem 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.8rem 0;
+        font-size: 1.2rem;
+    }
+}
 
     </style>
 </head>
@@ -964,14 +1106,24 @@
         </button>
 
         <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="aboutme.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="education.html">Education</a>
-            <a href="certificate.html">Certifications</a>
-            <a href="contact.html">Contact</a>
-            <a href="resume.html"><button class="download-cv">Download CV</button></a>
-        </nav>
+          <a href="index.html">Home</a>
+          <a href="aboutme.html">About</a>
+          <a href="skills.html">Skills</a>
+          <a href="education.html">Education</a>
+          
+          <!-- Dropdown Menu -->
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
+              <div class="dropdown-menu">
+                  <a href="certificate.html">Certifications</a>
+                  <a href="achievements.html">Achievements</a>
+                  <a href="internships.html">Internships</a>
+              </div>
+          </div>
+          
+          <a href="contact.html">Contact</a>
+          <a href="resume.html"><button class="download-cv">Download CV</button></a>
+      </nav>
     </header>
    
 

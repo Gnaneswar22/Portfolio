@@ -81,6 +81,71 @@ body {
 .nav-links a:hover {
     color: var(--primary-color);
 }
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color:#2A2D3A;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 10px 0;
+    top: 100%; 
+   
+}
+
+.dropdown-menu a {
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle:hover {
+    color: #007bff; /* Adjust this color to match your theme */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: #f5f5f5;
+        width: 100%;
+        padding: 0 0 0 20px;
+    }
+
+    .dropdown-toggle {
+        padding: 10px 0;
+    }
+}
 
 .download-cv {
     background: transparent;
