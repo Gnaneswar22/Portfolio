@@ -5,9 +5,211 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gnanesh-Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css\menu.css">
-    <link rel="stylesheet" href="optimize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        
+
+
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+         
+          
+          .nav-links {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100vh;
+            background: var(--darker-bg);
+            flex-direction: column;
+            padding: 70px 0 1rem;
+            gap: 2rem;
+            text-align: center;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.3s ease-out forwards; /* Added animation */
+          }
+
+          .nav-links.show {
+            display: flex;
+          }
+
+          .nav-links a {
+            display: block;
+            padding: 1rem 0;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+          }
+
+          .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary-color);
+          }
+
+          .nav-links a:last-child {
+            margin: 1rem 20px;
+          }
+
+          .download-cv {
+            width: 100%;
+            margin: 0 auto;
+          }
+
+          /* Hamburger animation */
+          .hamburger.active span:first-child {
+            transform: translateY(9px) rotate(45deg);
+          }
+          .hamburger.active span:nth-child(2) {
+            opacity: 0;
+          }
+          .hamburger.active span:last-child {
+            transform: translateY(-9px) rotate(-45deg);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .nav-links {
+            width: 100%;
+          }
+          
+          .nav-links a {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+          }
+        }
+
+        /* Keyframes for the slide-in animation */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-secondary);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-menu a {
+            color: var(--text-light);
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile adjustments for dropdown */
+        @media (max-width: 768px) {
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background: var(--darker-bg);
+                padding: 0;
+            }
+
+            .dropdown-toggle {
+                padding: 1rem 0;
+                justify-content: center;
+            }
+
+            .dropdown-menu a {
+                padding: 1rem 0;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+        }
+        @media (max-width: 768px) {
+  .nav-links.show {
+    display: flex;
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  .nav-links a {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+   /* Apply animation to each item with a delay */
+  .nav-links a:nth-child(1) { animation-delay: 0.1s; }
+  .nav-links a:nth-child(2) { animation-delay: 0.2s; }
+  .nav-links a:nth-child(3) { animation-delay: 0.3s; }
+  .nav-links a:nth-child(4) { animation-delay: 0.4s; }
+  .dropdown .nav-links a:nth-child(5) { animation-delay: 0.5s; }
+  .nav-links a:nth-child(6) { animation-delay: 0.6s; }
+
+  .download-cv {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px);
+    animation: fadeIn 0.4s ease-out forwards; /* Apply the animation */
+    animation-delay: 0.7s; /* Ensure it animates after other items */
+  }
+}
+
+/* Keyframes for the slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+ /* Keyframes for the fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
 </head>
 <body>
     <header class="header">
@@ -28,7 +230,7 @@
             <a href="education.html">Education</a>
             
             <!-- Dropdown Menu -->
-            <div class="dropdown" class="nav-links">
+            <div class="dropdown">
                 <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu">
                     <a href="certificate.html">Certifications</a>
@@ -212,7 +414,7 @@
                     <img src="images/design1.jpg" alt="Brand Design" loading="lazy">
                     <div class="project-overlay">
                         <h3>Brand Identity Design</h3>
-                        <p>Logo & Brand Guidelines</p>
+                        <p>Logo &amp; Brand Guidelines</p>
                     </div>
                 </div>
                 <div class="project-item" data-category="ui-design">
@@ -348,7 +550,26 @@
             </div>
         </div>
     </footer>
-
     <script src="script.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+	const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    // Toggle mobile menu
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('show');
+    });
+	
+	// Toggle dropdown menu
+    dropdownToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+    </script>
 </body>
 </html>

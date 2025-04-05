@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Licenses & Certifications</title>
-  <link rel="stylesheet" href="optimize.css">
+  <title>Licenses &amp; Certifications</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -502,16 +501,18 @@
             width: 100%;
             box-shadow: none;
             background: var(--darker-bg);
-            padding: 0 0 0 20px;
+            padding: 0;
         }
 
         .dropdown-toggle {
             padding: 1rem 0;
+            justify-content: center;
         }
 
         .dropdown-menu a {
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             font-size: 1.2rem;
+            text-align: center;
         }
     }
   </style>
@@ -548,7 +549,7 @@
   </header>
 
   <div class="certification-container">
-    <h1>Licenses & Certifications</h1>
+    <h1>Licenses &amp; Certifications</h1>
 
     <!-- first Certificate Card -->
     <div class="certification-card">
@@ -656,59 +657,66 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('credentialModal');
-      const pdfViewer = document.getElementById('credentialDocument');
-      const closeModal = document.querySelector('.close-modal');
-      const credentialButtons = document.querySelectorAll('.show-credential-btn');
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
+   document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('credentialModal');
+    const pdfViewer = document.getElementById('credentialDocument');
+    const closeModal = document.querySelector('.close-modal');
+    const credentialButtons = document.querySelectorAll('.show-credential-btn');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+	const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
-      // Toggle mobile menu
-      hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('show');
+    // Toggle mobile menu
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('show');
+    });
+	
+	// Toggle dropdown menu
+    dropdownToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Show credential modal
+    credentialButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get PDF path and format it correctly
+        let pdfPath = this.getAttribute('data-credential');
+        
+        // Replace backslashes with forward slashes for consistency
+        pdfPath = pdfPath.replace(/\\/g, '/');
+        
+        console.log('Opening PDF:', pdfPath);
+        
+        // Set the PDF source directly using the relative path
+        pdfViewer.setAttribute('src', pdfPath);
+        
+        // Show modal
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
       });
+    });
 
-      // Show credential modal
-      credentialButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // Get PDF path and format it correctly
-          let pdfPath = this.getAttribute('data-credential');
-          
-          // Replace backslashes with forward slashes for consistency
-          pdfPath = pdfPath.replace(/\\/g, '/');
-          
-          console.log('Opening PDF:', pdfPath);
-          
-          // Set the PDF source directly using the relative path
-          pdfViewer.setAttribute('src', pdfPath);
-          
-          // Show modal
-          modal.style.display = 'flex';
-          document.body.style.overflow = 'hidden';
-        });
-      });
+    // Close modal handlers
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+      pdfViewer.setAttribute('src', '');
+      document.body.style.overflow = 'auto';
+    });
 
-      // Close modal handlers
-      closeModal.addEventListener('click', function() {
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
         modal.style.display = 'none';
         pdfViewer.setAttribute('src', '');
         document.body.style.overflow = 'auto';
-      });
-
-      window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-          pdfViewer.setAttribute('src', '');
-          document.body.style.overflow = 'auto';
-        }
-      });
+      }
     });
+  });
   </script>
   
-  <script src="menu.js"></script>
 </body>
 </html>

@@ -164,6 +164,7 @@ body {
 
 /* Hamburger Menu */
 .hamburger {
+  left: 100%;
     display: none;
     flex-direction: column;
     gap: 6px;
@@ -1635,4 +1636,4 @@ body {
       color: var(--primary-color);
     }
   }
-  
+ 

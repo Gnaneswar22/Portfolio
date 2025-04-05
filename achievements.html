@@ -269,6 +269,54 @@
         padding: 0.8rem 0;
       }
     }
+    @media (max-width: 768px) {
+  .nav-links.show {
+    display: flex;
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  .nav-links a {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+   /* Apply animation to each item with a delay */
+  .nav-links a:nth-child(1) { animation-delay: 0.1s; }
+  .nav-links a:nth-child(2) { animation-delay: 0.2s; }
+  .nav-links a:nth-child(3) { animation-delay: 0.3s; }
+  .nav-links a:nth-child(4) { animation-delay: 0.4s; }
+  .dropdown .nav-links a:nth-child(5) { animation-delay: 0.5s; }
+  .nav-links a:nth-child(6) { animation-delay: 0.6s; }
+
+  .download-cv {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px);
+    animation: fadeIn 0.4s ease-out forwards; /* Apply the animation */
+    animation-delay: 0.7s; /* Ensure it animates after other items */
+  }
+}
+
+/* Keyframes for the slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+ /* Keyframes for the fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
     /* Achievement Container */
     .achievement-container {
@@ -414,7 +462,7 @@
       background: var(--bg-secondary);
       width: 60%;
       height: 70vh;
-      position: relative;
+      position: relative;22
       margin: 20px auto;
       border-radius: 12px;
       overflow: hidden;
