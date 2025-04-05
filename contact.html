@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me - Portfolio</title>
+    <link rel="stylesheet" href="theme.css">
+
     <link rel="stylesheet" href="optimize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -613,6 +615,14 @@
             </form>
         </div>
     </div>
+<!-- Add this HTML for the floating toggle -->
+<div class="theme-toggle-container">
+    <div class="toggle-thread"></div>
+    <button class="mode-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+        <div class="toggle-handle"></div>
+    </button>
+</div>
 
     <script>
         function handleSubmit(event) {
@@ -623,5 +633,6 @@
         }
     </script>
     <script src="menu.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>

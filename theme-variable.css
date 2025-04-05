@@ -1,0 +1,46 @@
+/* theme-variables.css */
+:root {
+    /* Light Theme Variables */
+    --bg-light: #ffffff;
+    --bg-light-secondary: #f5f5f5;
+    --text-dark: #333333;
+    --text-gray-light: #666666;
+    --border-light: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --card-bg-light: #ffffff;
+    
+    /* Dark Theme Variables */
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --border-dark: #3a3f55;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --card-bg-dark: #2A2D3A;
+    
+    /* Common Variables */
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+}
+:root {
+    /* Light Theme */
+    --bg-light: #ffffff;
+    --bg-light-secondary: #f5f5f5;
+    --text-dark: #333333;
+    --text-gray-light: #666666;
+    --border-light: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    
+    /* Dark Theme */
+    --bg-secondary: #1E2028;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --border-dark: #3a3f55;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    
+    /* Accent Colors */
+    --accent-primary: #E94B3C;
+    --primary-color: #ff4D4D;
+}

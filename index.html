@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gnanesh-Portfolio</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="theme-variable.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -208,6 +210,69 @@
         transform: translateY(0);
     }
 }
+/* New Footer Styles */
+.new-footer {
+    padding: 20px;
+    text-align: center;
+    position: relative; /* For positioning the back-to-top button */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    text-decoration: none;
+}
+
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    font-size: 1.3em;
+    margin: 0 10px;
+}
+
+.footer-privacy {
+    font-size: 0.9em;
+}
+
+.footer-privacy a {
+    text-decoration: none;
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0;
+}
+
+.mode-toggle i {
+    /* Styles for the eye icon */
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.2em;
+}
+
 
     </style>
 </head>
@@ -509,67 +574,77 @@
             </div>
         </div>
     </section>
+    <!-- Add this HTML for the floating toggle -->
+<div class="theme-toggle-container">
+    <div class="toggle-thread"></div>
+    <button class="mode-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+        <div class="toggle-handle"></div>
+    </button>
+</div>
+
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="Gnanesh">
-                    </div>
-                    <p>Creating innovative digital solutions with passion and precision. Let's build something amazing together.</p>
-                    <div class="footer-social">
-                        <a href="https://github.com/Gnaneswar22" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/gnaneswardamarasingu/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
+    <!-- Footer Section -->
+<footer class="modern-footer">
+    <div class="footer-ripple"></div>
+    
+    <!-- Animated Background Elements -->
+    <div class="geometric-elements">
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+    </div>
 
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+    <div class="footer-content">
+        <!-- Social Links with Hover Cards -->
+        <div class="social-grid">
+            <a href="https://www.linkedin.com/in/gnaneswar-damarasingu-4a2787249" class="social-card linkedin">
+                <div class="card-content">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
                 </div>
+            </a>
 
-                <div class="footer-contact">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-envelope"></i>gnaneswardamarasingu@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +91 9391376258</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
+            <a href="mailto:gnaneshward@gmail.com" class="social-card email">
+                <div class="card-content">
+                    <i class="far fa-envelope"></i>
+                    <span>Email</span>
                 </div>
-            </div>
+            </a>
+
+            <a href="https://github.com/Gnaneshwar504" class="social-card github">
+                <div class="card-content">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/gnaneswar_damarasingu/" class="social-card instagram">
+                <div class="card-content">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </div>
+            </a>
         </div>
+    </div>
 
-        <div class="footer-bottom">
-            <div class="copyright">
-                <p>© 2024 Gnaneswar. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Separated Bottom Footer -->
+    <div class="footer-bottom">
+        <p class="copyright">© 2024 Gnaneswar Damarasingu. All rights reserved.</p>
+    </div>
+</footer>
+
+    
+        
+    
     <script src="script.js"></script>
-    <script>
-     document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-	const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
-    // Toggle mobile menu
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navLinks.classList.toggle('show');
-    });
-	
-	// Toggle dropdown menu
-    dropdownToggle.addEventListener('click', function(event) {
-      event.preventDefault();
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-  });
-    </script>
+    
+ <script src="theme.js"></script>
 </body>
 </html>

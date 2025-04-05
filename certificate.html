@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Licenses &amp; Certifications</title>
+  <title>Certifications</title>
+  <link rel="stylesheet" href="theme-variable.css">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -547,7 +549,13 @@
       <a href="resume.html"><button class="download-cv">Download CV</button></a>
   </nav>
   </header>
-
+  <div class="theme-toggle-container">
+    <div class="toggle-thread"></div>
+    <button class="mode-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+        <div class="toggle-handle"></div>
+    </button>
+</div>
   <div class="certification-container">
     <h1>Licenses &amp; Certifications</h1>
 
@@ -655,6 +663,8 @@
       </div>
     </div>
   </div>
+<!-- Add this HTML for the floating toggle -->
+
 
   <script>
    document.addEventListener('DOMContentLoaded', function() {
@@ -717,6 +727,6 @@
     });
   });
   </script>
-  
+   <script src="theme.js"></script>
 </body>
 </html>

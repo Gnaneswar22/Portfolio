@@ -1,0 +1,2306 @@
+/* theme.css */
+:root {
+    /* Light Theme Variables */
+    --bg-light: #ffffff;
+    --bg-light-secondary: #f5f5f5;
+    --text-dark: #333333;
+    --text-gray-light: #666666;
+    --border-light: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    
+    /* Dark Theme Variables */
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --border-dark: #3a3f55;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    
+    /* Common Variables */
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+}
+
+/* Base Theme Styles */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* Theme-specific styles for common elements */
+/* Header */
+.light-mode .header {
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dark-mode .header {
+    background: var(--darker-bg);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+/* Navigation */
+.light-mode .nav-links a { color: var(--text-dark); }
+.dark-mode .nav-links a { color: var(--text-light); }
+
+/* Cards/Sections */
+.light-mode .card,
+.light-mode .section {
+    background: var(--bg-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.dark-mode .card,
+.dark-mode .section {
+    background: var(--darker-bg);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+/* Form Elements */
+.light-mode input,
+.light-mode textarea {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+    color: var(--text-light);
+}
+
+/* Add more theme-specific styles for other components */
+/* Floating Theme Toggle Styles */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px; /* Maximum pull height */
+}
+
+/* Thread Style */
+.toggle-thread {
+    left: 70%;
+    width: 2px;
+    height: 40px; /* Initial thread length */
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color) 50%,
+        rgba(255, 77, 77, 0.3) 100%
+    );
+    transition: height 0.3s ease;
+}
+
+/* Toggle Button Style */
+.mode-toggle {
+    left: 70%;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(255, 77, 77, 0.3);
+}
+
+.mode-toggle:active {
+    cursor: grabbing;
+}
+
+/* Handle on the toggle */
+.toggle-handle {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px 5px 0 0;
+}
+
+.mode-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.5s ease;
+}
+
+/* Theme-specific styles */
+.light-mode .mode-toggle {
+    background: #ffd700;
+}
+
+.dark-mode .mode-toggle {
+    background: #2A2D3A;
+}
+
+/* Animation for icon swap */
+.mode-toggle.pulled i {
+    transform: rotate(360deg);
+}
+/* Updated Floating Theme Toggle Styles */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px; /* Increased container height */
+    transform-origin: top center;
+    animation: gentlePendulum 3s ease-in-out infinite; /* Slower pendulum animation */
+}
+
+/* Longer Thread Style */
+.toggle-thread {
+    width: 2px;
+    height: 120px; /* Increased initial thread length */
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color) 50%,
+        rgba(255, 77, 77, 0.3) 100%
+    );
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+/* Decorative Thread Knot */
+.toggle-thread::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Updated Toggle Button Style */
+.mode-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 15px rgba(255, 77, 77, 0.4);
+}
+
+/* Pendulum Animations */
+@keyframes gentlePendulum {
+    0% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+/* Enhanced Thread Glow */
+@keyframes threadGlow {
+    0% { 
+        box-shadow: 0 0 5px var(--primary-color),
+                    0 0 8px var(--primary-color);
+    }
+    50% { 
+        box-shadow: 0 0 10px var(--primary-color),
+                    0 0 15px var(--primary-color);
+    }
+    100% { 
+        box-shadow: 0 0 5px var(--primary-color),
+                    0 0 8px var(--primary-color);
+    }
+}
+
+.toggle-thread {
+    animation: threadGlow 3s ease-in-out infinite;
+}
+
+/* Pull Animation */
+@keyframes pullStretch {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(1.1); }
+    100% { transform: scaleY(1); }
+}
+
+/* Theme-specific styles */
+.light-mode .mode-toggle {
+    background: #ffd700;
+    box-shadow: 0 2px 15px rgba(255, 215, 0, 0.4);
+}
+
+.dark-mode .mode-toggle {
+    background: #2A2D3A;
+    box-shadow: 0 2px 15px rgba(42, 45, 58, 0.4);
+}
+
+/* Hover effect */
+.mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Active state */
+.mode-toggle:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+/* Icon styles */
+.mode-toggle i {
+    font-size: 1.4rem;
+    transition: transform 0.8s ease;
+}
+
+.mode-toggle.pulled i {
+    transform: rotate(360deg) scale(1.2);
+}
+/* theme.css */
+/* Import theme variables */
+@import url('theme-variables.css');
+
+/* Base Theme Styles */
+body.light-mode {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* Header Theming */
+.light-mode .header {
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dark-mode .header {
+    background-color: var(--darker-bg);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+/* Navigation Links */
+.light-mode .nav-links a {
+    color: var(--text-dark);
+}
+
+.dark-mode .nav-links a {
+    color: var(--text-light);
+}
+
+/* Sections Background */
+.light-mode .hero-wrapper,
+.light-mode .can-design-section,
+.light-mode .projects-section,
+.light-mode .contact-section,
+.light-mode .about-section,
+.light-mode .skills-section,
+.light-mode .education-section {
+    background-color: var(--bg-light);
+}
+
+.dark-mode .hero-wrapper,
+.dark-mode .can-design-section,
+.dark-mode .projects-section,
+.dark-mode .contact-section,
+.dark-mode .about-section,
+.dark-mode .skills-section,
+.dark-mode .education-section {
+    background-color: var(--dark-bg);
+}
+
+/* Cards and Containers */
+.light-mode .card,
+.light-mode .project-item,
+.light-mode .skill-card,
+.light-mode .education-card,
+.light-mode .contact-card {
+    background-color: var(--card-bg-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.dark-mode .card,
+.dark-mode .project-item,
+.dark-mode .skill-card,
+.dark-mode .education-card,
+.dark-mode .contact-card {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+/* Text Elements */
+.light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
+    color: var(--text-dark);
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+    color: var(--text-light);
+}
+
+.light-mode p, .light-mode span, .light-mode li {
+    color: var(--text-gray-light);
+}
+
+.dark-mode p, .dark-mode span, .dark-mode li {
+    color: var(--text-gray);
+}
+
+/* Form Elements */
+.light-mode input,
+.light-mode textarea,
+.light-mode select {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+    color: var(--text-light);
+}
+
+/* Buttons */
+.light-mode .btn,
+.light-mode button:not(.mode-toggle) {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+}
+
+.dark-mode .btn,
+.dark-mode button:not(.mode-toggle) {
+    background-color: var(--darker-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-dark);
+}
+
+/* Tables */
+.light-mode table {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-light);
+}
+
+.dark-mode table {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+}
+
+/* Footer */
+.light-mode .new-footer {
+    background-color: var(--bg-light-secondary);
+    border-top: 1px solid var(--border-light);
+}
+
+.dark-mode .new-footer {
+    background-color: var(--darker-bg);
+    border-top: 1px solid var(--border-dark);
+}
+
+/* Additional Elements */
+.light-mode .dropdown-menu {
+    background-color: var(--bg-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.dark-mode .dropdown-menu {
+    background-color: var(--darker-bg);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+/* Scrollbar */
+.light-mode ::-webkit-scrollbar-track {
+    background: var(--bg-light-secondary);
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+    background: var(--text-gray-light);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--text-gray);
+}
+
+/* Selection */
+.light-mode ::selection {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.dark-mode ::selection {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+/* Achievement Card Theme Styles */
+/* Card Background */
+.light-mode .achievement-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .achievement-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(233, 75, 60, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Text Colors */
+.light-mode .achievement-name {
+    color: #333333;
+}
+
+.light-mode .organization {
+    color: #666666;
+}
+
+.light-mode .achievement-date {
+    color: #888888;
+}
+
+.dark-mode .achievement-name {
+    color: var(--text-light);
+}
+
+.dark-mode .organization {
+    color: var(--text-gray);
+}
+
+.dark-mode .achievement-date {
+    color: var(--text-gray);
+}
+
+/* Button Styles */
+.light-mode .show-credential-btn {
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    color: #333333;
+}
+
+.dark-mode .show-credential-btn {
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    color: var(--text-light);
+}
+
+/* Expanded Image Section */
+.light-mode .achievement-image-section {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+}
+
+.dark-mode .achievement-image-section {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+}
+
+/* Hover Effects */
+.light-mode .achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(233, 75, 60, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Styles */
+.light-mode .modal-content {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.dark-mode .modal-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-dark);
+}
+
+.light-mode .close-modal {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333333;
+}
+
+.dark-mode .close-modal {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+/* Container Background */
+.light-mode .achievement-container {
+    background: var(--bg-light);
+}
+
+.dark-mode .achievement-container {
+    background: var(--dark-bg);
+}
+
+/* Heading Styles */
+.light-mode .achievement-container h1 {
+    color: #333333;
+}
+
+.light-mode .achievement-container h1::after {
+    background: linear-gradient(to right, var(--accent-primary), transparent);
+}
+
+/* Transitions */
+.achievement-card,
+.achievement-card *,
+.modal-content,
+.close-modal {
+    transition: all 0.3s ease;
+}
+/* Dark Mode - Remove Backgrounds */
+.dark-mode .certification-card,
+.dark-mode .internship-card,
+.dark-mode .contact-form,
+.dark-mode .contact-method,
+.dark-mode .achievement-card,
+.dark-mode .modal-content,
+.dark-mode .dropdown-menu,
+.dark-mode .card,
+.dark-mode .project-item,
+.dark-mode .skill-card,
+.dark-mode .education-card,
+.dark-mode .contact-card {
+    background: transparent;
+    border: 1px solid rgba(233, 75, 60, 0.1);
+    color: var(--text-light);
+}
+
+/* Dark Mode Container Backgrounds */
+.dark-mode .container,
+.dark-mode .certification-container,
+.dark-mode .internship-container,
+.dark-mode .achievement-container,
+.dark-mode .hero-wrapper,
+.dark-mode .can-design-section,
+.dark-mode .projects-section,
+.dark-mode .contact-section,
+.dark-mode .about-section,
+.dark-mode .skills-section,
+.dark-mode .education-section {
+    background: transparent;
+}
+
+/* Dark Mode Form Elements */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background: transparent;
+    border: 1px solid rgba(233, 75, 60, 0.1);
+    color: var(--text-light);
+}
+
+/* Dark Mode Hover Effects */
+.dark-mode .certification-card:hover,
+.dark-mode .internship-card:hover,
+.dark-mode .contact-method:hover,
+.dark-mode .achievement-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Modal */
+.dark-mode .modal-content {
+    background: rgba(30, 32, 40, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Dark Mode Dropdown */
+.dark-mode .dropdown-menu {
+    background: rgba(30, 32, 40, 0.95);
+    backdrop-filter: blur(10px);
+}
+/* Hero Section Styles */
+.hero-wrapper {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 90vh;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+/* Light Mode Hero */
+.light-mode .hero-wrapper {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.97), 
+        rgba(245, 245, 245, 0.95)),
+        url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Dark Mode Hero */
+.dark-mode .hero-wrapper {
+    background: linear-gradient(135deg, 
+        rgba(30, 32, 40, 0.97), 
+        rgba(42, 45, 58, 0.95)),
+        url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Hero Layout */
+.hero-layout {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 4rem 8%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.hero-layout.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* Hero Text Colors - Light Mode */
+.light-mode .hero-hello {
+    color: var(--primary-color);
+}
+
+.light-mode .hero-name {
+    color: var(--text-dark);
+}
+
+.light-mode .hero-title {
+    color: var(--text-dark);
+}
+
+.light-mode .hero-description {
+    color: var(--text-gray-light);
+}
+
+/* Hero Text Colors - Dark Mode */
+.dark-mode .hero-hello {
+    color: var(--primary-color);
+}
+
+.dark-mode .hero-name,
+.dark-mode .hero-title {
+    color: var(--text-light);
+}
+
+.dark-mode .hero-description {
+    color: var(--text-gray);
+}
+
+/* Role and Location Colors (Same for both modes) */
+.role {
+    color: var(--accent-green);
+}
+
+.location {
+    color: #FFD700;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem 5%;
+    }
+
+    .hero-wrapper {
+        background-attachment: scroll; /* Better mobile performance */
+    }
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content > * {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.hero-hello { animation-delay: 0.2s; }
+.hero-name { animation-delay: 0.4s; }
+.hero-title { animation-delay: 0.6s; }
+.hero-description { animation-delay: 0.8s; }
+/* Can Design Section Base Styles */
+.can-design-section {
+    padding: 4rem 0;
+    min-height: 50vh;
+    position: relative;
+    overflow: hidden;
+    transition: background-image 0.6s ease;
+}
+
+/* Background Shapes and Glows */
+.background-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Light Mode Styles */
+.light-mode .can-design-section {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.97), 
+        rgba(245, 245, 245, 0.95)),
+        url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.light-mode .design-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .design-text h2 {
+    color: var(--text-dark);
+}
+
+.light-mode .design-text p {
+    color: var(--text-gray-light);
+}
+
+/* Dark Mode Styles */
+.dark-mode .can-design-section {
+    background: linear-gradient(135deg, 
+        rgba(30, 32, 40, 0.97), 
+        rgba(42, 45, 58, 0.95)),
+        url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.dark-mode .design-content {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .design-text h2 {
+    color: var(--text-light);
+}
+
+.dark-mode .design-text p {
+    color: var(--text-gray);
+}
+
+/* Design Content Styles */
+.design-content {
+   
+    margin: 0 10%;
+    padding: 2rem;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    
+    
+}
+
+.design-content.active {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Stats Container Styles */
+.stats-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.light-mode .stat-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .stat-box {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stats Numbers and Labels */
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--primary-color), #ff8f8f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 1rem;
+}
+
+.light-mode .stat-label {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .stat-label {
+    color: var(--text-gray);
+}
+
+/* Hire Me Button */
+.hire-me-btn {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+
+.light-mode .hire-me-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.dark-mode .hire-me-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-light);
+}
+
+.hire-me-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+/* Hover Effects */
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .design-content.active {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .stats-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+    }
+
+    .stat-box {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .design-content {
+        margin: 0 5%;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.design-content.active {
+    animation: fadeInUp 0.6s ease forwards;
+}
+/* Common Button Styles */
+.download-cv,
+.hire-me-btn,
+.submit-btn,
+.filter-btn,
+.show-credential-btn,
+.project-btn,
+.contact-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Light Mode Button Styles */
+.light-mode .download-cv,
+.light-mode .hire-me-btn,
+.light-mode .submit-btn,
+.light-mode .filter-btn,
+.light-mode .show-credential-btn,
+.light-mode .project-btn,
+.light-mode .contact-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-dark);
+}
+
+/* Dark Mode Button Styles */
+.dark-mode .download-cv,
+.dark-mode .hire-me-btn,
+.dark-mode .submit-btn,
+.dark-mode .filter-btn,
+.dark-mode .show-credential-btn,
+.dark-mode .project-btn,
+.dark-mode .contact-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Fill Effect for All Buttons */
+.download-cv::before,
+.hire-me-btn::before,
+.submit-btn::before,
+.filter-btn::before,
+.show-credential-btn::before,
+.project-btn::before,
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+/* Hover Fill Effect */
+.download-cv:hover::before,
+.hire-me-btn:hover::before,
+.submit-btn:hover::before,
+.filter-btn:hover::before,
+.show-credential-btn:hover::before,
+.project-btn:hover::before,
+.contact-btn:hover::before {
+    width: 100%;
+}
+
+/* Text Color Change on Hover */
+.light-mode .download-cv:hover,
+.light-mode .hire-me-btn:hover,
+.light-mode .submit-btn:hover,
+.light-mode .filter-btn:hover,
+.light-mode .show-credential-btn:hover,
+.light-mode .project-btn:hover,
+.light-mode .contact-btn:hover,
+.dark-mode .download-cv:hover,
+.dark-mode .hire-me-btn:hover,
+.dark-mode .submit-btn:hover,
+.dark-mode .filter-btn:hover,
+.dark-mode .show-credential-btn:hover,
+.dark-mode .project-btn:hover,
+.dark-mode .contact-btn:hover {
+    color: white;
+}
+
+/* Active State */
+.download-cv:active,
+.hire-me-btn:active,
+.submit-btn:active,
+.filter-btn:active,
+.show-credential-btn:active,
+.project-btn:active,
+.contact-btn:active {
+    transform: scale(0.95);
+}
+
+/* Button Icon Styles */
+.button-icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Icon Animation on Hover */
+.download-cv:hover .button-icon,
+.hire-me-btn:hover .button-icon,
+.submit-btn:hover .button-icon,
+.show-credential-btn:hover .button-icon,
+.project-btn:hover .button-icon,
+.contact-btn:hover .button-icon {
+    transform: translateX(5px);
+}
+
+/* Filter Button Active State */
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Button Loading State */
+.button-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.button-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: button-loading-spinner 0.8s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* Button Groups */
+.button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .download-cv,
+    .hire-me-btn,
+    .submit-btn,
+    .filter-btn,
+    .show-credential-btn,
+    .project-btn,
+    .contact-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.9rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+/* Custom Focus State */
+.download-cv:focus,
+.hire-me-btn:focus,
+.submit-btn:focus,
+.filter-btn:focus,
+.show-credential-btn:focus,
+.project-btn:focus,
+.contact-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.3);
+}
+/* Theme Toggle Container */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    transform-origin: top center;
+    animation: gentlePendulum 3s ease-in-out infinite;
+}
+
+/* Thread Style */
+.toggle-thread {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color) 50%,
+        rgba(255, 77, 77, 0.3) 100%
+    );
+    transition: height 0.5s ease;
+    position: relative;
+    animation: threadGlow 3s ease-in-out infinite;
+}
+
+/* Thread Knot */
+.toggle-thread::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Toggle Button */
+.mode-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.light-mode .mode-toggle {
+    background: #cc9a11;
+    box-shadow: 0 2
+}
+/* Certifications Specific Styles */
+.certification-container {
+    max-width: 800px;
+    margin: 120px auto 20px;
+    padding: 24px;
+}
+
+.certification-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .certification-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.dark-mode .certification-card {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+}
+
+.light-mode .certification-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px var(--shadow-light);
+}
+
+.dark-mode .certification-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px var(--shadow-dark);
+}
+
+.badge-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.certification-details {
+    flex: 1;
+    padding-left: 5%;
+}
+
+.certification-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.light-mode .certification-name {
+    color: var(--text-dark);
+}
+
+.dark-mode .certification-name {
+    color: var(--text-light);
+}
+
+.issuer {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.light-mode .issuer {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .issuer {
+    color: var(--text-gray);
+}
+
+.issue-date {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.light-mode .issue-date {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .issue-date {
+    color: var(--text-gray);
+}
+
+/* Internships Specific Styles */
+.internship-container {
+    max-width: 800px;
+    margin: 120px auto 20px;
+    padding: 24px;
+}
+
+.internship-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .internship-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.dark-mode .internship-card {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+.internship-card:hover {
+    transform: translateY(-5px);
+}
+
+.light-mode .internship-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px var(--shadow-light);
+}
+
+.dark-mode .internship-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px var(--shadow-dark);
+}
+
+.internship-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.internship-details {
+    flex: 1;
+}
+
+.internship-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.light-mode .internship-title {
+    color: var(--text-dark);
+}
+
+.dark-mode .internship-title {
+    color: var(--text-light);
+}
+
+.company {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.light-mode .company {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .company {
+    color: var(--text-gray);
+}
+
+.internship-period {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.light-mode .internship-period {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .internship-period {
+    color: var(--text-gray);
+}
+
+.internship-description {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.light-mode .internship-description {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .internship-description {
+    color: var(--text-gray);
+}
+
+/* Common Styles for Both */
+.show-credential-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.light-mode .show-credential-btn {
+    border: 2px solid var(--primary-color);
+    color: var(--text-dark);
+}
+
+.dark-mode .show-credential-btn {
+    border: 2px solid var(--primary-color);
+    color: var(--text-light);
+}
+
+.show-credential-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.show-credential-btn i {
+    margin-left: 8px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 90%;
+    height: 90vh;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.light-mode .modal-content {
+    background: var(--bg-light);
+}
+
+.dark-mode .modal-content {
+    background: var(--darker-bg);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1002;
+    transition: all 0.3s ease;
+}
+
+.light-mode .close-modal {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
+}
+
+.dark-mode .close-modal {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .certification-card,
+    .internship-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .badge-image,
+    .internship-image {
+        margin-bottom: 15px;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+/* Contact Page Specific Styles */
+/* Container */
+.container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Contact Section */
+.contact-section {
+    padding-top: 15%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.light-mode .section-title {
+    color: var(--primary-color);
+}
+
+.dark-mode .section-title {
+    color: var(--accent-primary);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-primary), transparent);
+}
+
+/* Contact Text */
+.contact-text {
+    margin-bottom: 2rem;
+}
+
+.light-mode .contact-text {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .contact-text {
+    color: var(--text-secondary);
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .contact-method {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+}
+
+.dark-mode .contact-method {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(233, 75, 60, 0.1);
+}
+
+.contact-method:hover {
+    transform: translateX(10px);
+}
+
+.light-mode .contact-method:hover {
+    border-color: var(--primary-color);
+}
+
+.dark-mode .contact-method:hover {
+    border-color: rgba(233, 75, 60, 0.3);
+}
+
+/* Method Icon */
+.method-icon {
+    font-size: 1.5rem;
+}
+
+.light-mode .method-icon {
+    color: var(--primary-color);
+}
+
+.dark-mode .method-icon {
+    color: var(--accent-primary);
+}
+
+/* Contact Form */
+.contact-form {
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .contact-form {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 10px 30px var(--shadow-light);
+}
+
+.dark-mode .contact-form {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(233, 75, 60, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Elements */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.light-mode .form-label {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .form-label {
+    color: var(--text-secondary);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .form-input {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+
+.dark-mode .form-input {
+    background: var(--bg-primary);
+    border: 1px solid rgba(233, 75, 60, 0.1);
+    color: var(--text-primary);
+}
+
+.form-input:focus {
+    outline: none;
+}
+
+.light-mode .form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.1);
+}
+
+.dark-mode .form-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(233, 75, 60, 0.1);
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-mode .submit-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-dark);
+}
+
+.dark-mode .submit-btn {
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+}
+
+.light-mode .submit-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.dark-mode .submit-btn:hover {
+    background: rgba(233, 75, 60, 0.1);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.light-mode .social-link {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .social-link {
+    color: var(--text-secondary);
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+.light-mode .social-link:hover {
+    color: var(--primary-color);
+}
+
+.dark-mode .social-link:hover {
+    color: var(--accent-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact-method:hover {
+        transform: translateY(-5px);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+/* Domain Switcher */
+.domain-switcher {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.light-mode .domain-switcher {
+    background: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+}
+
+.dark-mode .domain-switcher {
+    background: var(--accent-primary);
+    color: var(--text-light);
+    box-shadow: 0 0 20px rgba(233, 75, 60, 0.3);
+}
+
+.domain-switcher:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.domain-switcher i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Footer Styles */
+.new-footer {
+    background: var(--bg-secondary);
+    padding: 3rem 0 2rem;
+    margin-top: auto;
+    position: relative;
+}
+
+.light-mode .new-footer {
+    background: var(--bg-light-secondary);
+    border-top: 1px solid var(--border-light);
+}
+
+.dark-mode .new-footer {
+    background: var(--darker-bg);
+    border-top: 1px solid var(--border-dark);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Footer Navigation */
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.light-mode .footer-nav a {
+    color: var(--text-dark);
+}
+
+.dark-mode .footer-nav a {
+    color: var(--text-light);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.footer-nav i {
+    font-size: 1.2rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid;
+}
+
+.light-mode .footer-bottom {
+    border-color: var(--border-light);
+}
+
+.dark-mode .footer-bottom {
+    border-color: var(--border-dark);
+}
+
+.footer-info p {
+    margin-bottom: 1rem;
+}
+
+.footer-privacy {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-privacy a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.light-mode .footer-privacy a {
+    color: var(--text-gray-light);
+}
+
+.dark-mode .footer-privacy a {
+    color: var(--text-gray);
+}
+
+.footer-privacy a:hover {
+    color: var(--primary-color);
+}
+
+.separator {
+    color: var(--text-gray);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: absolute;
+    top: -25px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.light-mode .back-to-top {
+    background: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 2px 10px rgba(255, 77, 77, 0.3);
+}
+
+.dark-mode .back-to-top {
+    background: var(--accent-primary);
+    color: var(--text-light);
+    box-shadow: 0 2px 10px rgba(233, 75, 60, 0.3);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-nav {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .back-to-top {
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .domain-switcher {
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-privacy {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+/* Theme-specific styles */
+.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-mode {
+    --bg-color: #2A2D3A;
+    --text-color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Hamburger Menu Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 15px;
+        z-index: 1000;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+/* Add these to your theme.css */
+
+/* Mobile-specific theme styles */
+@media (max-width: 768px) {
+    .theme-toggle-container {
+        right: 20px;
+        height: auto;
+        top: 15px;
+    }
+
+    .mode-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mode-toggle i {
+        font-size: 1.2rem;
+    }
+
+    /* Light mode mobile styles */
+    body.light-mode .nav-links {
+        background: var(--bg-light);
+    }
+
+    body.light-mode .nav-links a {
+        color: var(--text-dark);
+    }
+
+    body.light-mode .dropdown-menu {
+        background: var(--bg-light);
+    }
+
+    /* Dark mode mobile styles */
+    body.dark-mode .nav-links {
+        background: var(--darker-bg);
+    }
+
+    body.dark-mode .nav-links a {
+        color: var(--text-light);
+    }
+
+    body.dark-mode .dropdown-menu {
+        background: var(--darker-bg);
+    }
+
+    /* Mobile menu text colors */
+    body.light-mode .nav-links .dropdown-menu a {
+        color: var(--text-dark);
+    }
+
+    body.dark-mode .nav-links .dropdown-menu a {
+        color: var(--text-light);
+    }
+}
+
+/* Theme transition */
+body,
+.nav-links,
+.dropdown-menu,
+.hamburger span {
+    transition: all 0.3s ease;
+}
+/* Modern Footer with Theme Support */
+.modern-footer {
+    position: relative;
+    padding: 4rem 0 0;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Theme-specific backgrounds with images */
+.light-mode .modern-footer {
+    background: linear-gradient(135deg, 
+        rgba(245, 245, 245, 0.95), 
+        rgba(255, 255, 255, 0.90)
+    ),
+    url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Social Cards - Light Mode */
+.light-mode .social-card {
+    color: white; /* Ensuring text is white in both modes */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .social-card.linkedin {
+    background: linear-gradient(135deg, #0077B5, #00a0dc);
+}
+
+.light-mode .social-card.email {
+    background: linear-gradient(135deg, #ff4d4d, #ff8f8f);
+}
+
+.light-mode .social-card.github {
+    background: linear-gradient(135deg, #2f2f2f, #4a4a4a);
+}
+
+.light-mode .social-card.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* Footer Bottom Text - Light Mode */
+.light-mode .footer-bottom {
+    background: rgba(51, 51, 51, 0.9);
+}
+
+.light-mode .copyright {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Card Content */
+.card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.social-card i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: white; /* Ensuring icons are white */
+}
+
+.social-card span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white; /* Ensuring text is white */
+}
+
+/* Card Hover Effects */
+.social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .social-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme Transitions */
+.header,
+.nav-links,
+.nav-links a,
+.hamburger span,
+.dropdown-menu {
+    transition: all 0.3s ease;
+}
+
+/* Light Mode Styles */
+.light-mode .header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .nav-links {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.light-mode .nav-links a {
+    color: #333333;
+}
+
+/* Dark Mode Styles */
+.dark-mode .header {
+    background: rgba(42, 45, 58, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .nav-links {
+    background: rgba(42, 45, 58, 0.98);
+}
+
+.dark-mode .nav-links a {
+    color: #ffffff;
+}
+/* Footer Theme Transitions */
+.modern-footer,
+.footer-bottom,
+.copyright,
+.footer-privacy a,
+.social-card {
+    transition: all 0.3s ease;
+}
+
+/* Footer Colors */
+.light-mode .footer-bottom {
+    background: rgba(51, 51, 51, 0.9);
+}
+
+.light-mode .copyright,
+.light-mode .footer-privacy a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .copyright,
+.dark-mode .footer-privacy a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Footer Link Hover Effects */
+.footer-privacy a:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-2px);
+}
