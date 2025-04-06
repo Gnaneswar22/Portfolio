@@ -8,411 +8,41 @@
     <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --bg-primary: #0a0d14;
-            --bg-secondary: #111827;
-            --accent-primary: #E94B3C;
-            --accent-secondary: #2D1B69;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --primary-color: #ff4D4D;
-            --accent-green: #4CAF50;
-            --dark-bg: #2A2D3A;
-            --darker-bg: #1E2028;
-            --text-light: #ffffff;
-            --text-gray: #B0B0B0;
-            --text-gold: #FFD700;
+:root {
+    --bg-primary: #0a0d14;
+    --bg-secondary: #111827;
+    --accent-primary: #E94B3C;
+    --accent-secondary: #2D1B69;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --primary-color: #ff4D4D;
+    --accent-green: #4CAF50;
+    --dark-bg: #2A2D3A;
+    --darker-bg: #1E2028;
+    --text-light: #ffffff;
+    --text-gray: #B0B0B0;
+    --text-gold: #FFD700;
+    --bg-light: #ffffff;
+    --bg-light-secondary: #f5f5f5;
+    --text-dark: #333333;
+    --text-gray-light: #666666;
+    --border-light: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
 
-            /* Light Theme Variables */
-            --bg-light: #ffffff;
-            --bg-light-secondary: #f5f5f5;
-            --text-dark: #333333;
-            --text-gray-light: #666666;
-            --border-light: #e0e0e0;
-            --shadow-light: rgba(0, 0, 0, 0.1);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        body.light-mode {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        body.dark-mode {
-            background: var(--bg-primary);
-            color: var(--text-light);
-        }
-
-        /* Header Styles */
-        .header {
-            padding: 1.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .light-mode .header {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .dark-mode .header {
-            background: rgba(42, 45, 58, 0.98);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-        /* Navigation Styles */
-        .nav-links {
-            height: 100vh;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .light-mode .nav-links a {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .nav-links a {
-            color: var(--text-light);
-        }
-
-        /* Download CV Button */
-        .download-cv {
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            padding: 0.6rem 1.8rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .light-mode .download-cv {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .download-cv {
-            color: var(--text-light);
-        }
-
-        .download-cv:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            margin-right: 10%;
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-            z-index: 1000;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .light-mode .hamburger span {
-            background-color: var(--text-dark);
-        }
-
-        .dark-mode .hamburger span {
-            background-color: var(--text-light);
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            padding: 10px 0;
-            border-radius: 4px;
-            z-index: 1000;
-            top: 100%;
-            left: 0;
-        }
-
-        .light-mode .dropdown-menu {
-            background: var(--bg-light);
-            box-shadow: 0 2px 10px var(--shadow-light);
-            border: 1px solid var(--border-light);
-        }
-
-        .dark-mode .dropdown-menu {
-            background: var(--darker-bg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            border: 1px solid var(--border-dark);
-        }
-
-        .dropdown-menu a {
-            padding: 10px 20px;
-            display: block;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        /* Skills Container Styles */
-        .skills-container {
-            max-width: 1000px;
-            margin: 120px auto 20px;
-            padding: 24px;
-        }
-
-        .skills-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .skills-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .light-mode .skills-header h1 {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .skills-header h1 {
-            color: var(--text-light);
-        }
-
-        .light-mode .skills-header p {
-            color: var(--text-gray-light);
-        }
-
-        .dark-mode .skills-header p {
-            color: var(--text-secondary);
-        }
-
-        .skills-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .light-mode .section-title {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .section-title {
-            color: var(--text-light);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: var(--primary-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .skill-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-item:hover .skill-icon {
-            transform: scale(1.1);
-        }
-
-        .skill-name {
-            font-size: 0.9rem;
-        }
-
-        .light-mode .skill-name {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .skill-name {
-            color: var(--text-light);
-        }
-
-        /* Theme Toggle Styles */
-        .theme-toggle-container {
-            position: fixed;
-            top: 0;
-            right: 40px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 300px;
-        }
-
-        .toggle-thread {
-            width: 2px;
-            height: 120px;
-            background: linear-gradient(to bottom, var(--primary-color) 50%, rgba(255, 77, 77, 0.3) 100%);
-            transition: height 0.5s ease;
-        }
-
-        .mode-toggle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .light-mode .mode-toggle {
-            background: #ffd700;
-            color: var(--text-dark);
-        }
-
-        .dark-mode .mode-toggle {
-            background: var(--darker-bg);
-            color: var(--text-light);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                flex-direction: column;
-                padding: 70px 0 1rem;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .skill-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .skill-name {
-                font-size: 0.8rem;
-            }
-
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                box-shadow: none;
-                border: none;
-            }
-        }
-        /* Add these to your existing styles */
 body {
-    transition: all 0.3s ease;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode {
@@ -425,70 +55,512 @@ body.dark-mode {
     color: var(--text-light);
 }
 
-/* Update theme-specific styles */
-.light-mode .skills-header h1 {
+/* Header Styles */
+.header {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.light-mode .header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dark-mode .header {
+    background: rgba(42, 45, 58, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Navigation */
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.light-mode .nav-links a {
     color: var(--text-dark);
 }
 
-.dark-mode .skills-header h1 {
+.dark-mode .nav-links a {
     color: var(--text-light);
 }
 
-.light-mode .skills-header p {
-    color: var(--text-gray-light);
+/* Download CV Button */
+.download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.dark-mode .skills-header p {
-    color: var(--text-secondary);
-}
-
-.light-mode .section-title {
+.light-mode .download-cv {
     color: var(--text-dark);
 }
 
-.dark-mode .section-title {
+.dark-mode .download-cv {
     color: var(--text-light);
 }
 
-.light-mode .skill-name {
+.download-cv:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+    position: fixed;
+    right: 10%;
+    top: 25px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    transition: all 0.3s ease;
+}
+
+.light-mode .hamburger span {
+    background-color: var(--text-dark);
+}
+
+.dark-mode .hamburger span {
+    background-color: var(--text-light);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    padding: 10px 0;
+    border-radius: 4px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+}
+
+.light-mode .dropdown-menu {
+    background: var(--bg-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+    border: 1px solid var(--border-light);
+}
+
+.dark-mode .dropdown-menu {
+    background: var(--darker-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-dark);
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Skills Container */
+.skills-container {
+    max-width: 1000px;
+    margin: 120px auto 20px;
+    padding: 24px;
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skills-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skills-section {
+    margin-bottom: 2.5rem;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1);
+}
+
+.skill-name {
+    font-size: 0.9rem;
+}
+
+/* Theme Toggle */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+}
+
+.toggle-thread {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(to bottom, var(--primary-color) 50%, rgba(255, 77, 77, 0.3) 100%);
+    transition: height 0.5s ease;
+}
+
+.mode-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.light-mode .mode-toggle {
+    background: #ffd700;
     color: var(--text-dark);
 }
 
-.dark-mode .skill-name {
+.dark-mode .mode-toggle {
+    background: var(--darker-bg);
     color: var(--text-light);
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--darker-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 70px 0 1rem;
+        gap: 2rem;
+        z-index: 1000;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        color: var(--text-light);
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+    }
+
+    .dropdown-toggle {
+        padding: 1rem 0;
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .skill-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skill-name {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for menu items */
+@media (max-width: 768px) {
+    .nav-links.show a,
+    .nav-links.show .dropdown {
+        animation: fadeInUp 0.4s ease forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-links.show a:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.show a:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links.show a:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links.show a:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links.show .dropdown { animation-delay: 0.5s; }
+    .nav-links.show a:nth-last-child(1) { animation-delay: 0.6s; }
+}
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden by default */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        position: absolute;
+        left: 75%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1001;
+    }
+
+    .hamburger span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-light);
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:first-child {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:last-child {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--darker-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        color: var(--text-light);
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .dropdown-toggle {
+        justify-content: center;
+        padding: 1rem 0;
+    }
+}
+
 
     </style>
 </head>
 <body class="light-mode">
     <header class="header">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="aboutme.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="education.html">Education</a>
-            
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-menu">
-                    <a href="certificate.html">Certifications</a>
-                    <a href="achievements.html">Achievements</a>
-                    <a href="internships.html">Internships</a>
-                </div>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="education.html">Education</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-menu">
+                <a href="certificate.html">Certifications</a>
+                <a href="achievements.html">Achievements</a>
+                <a href="internships.html">Internships</a>
             </div>
-            
-            <a href="contact.html">Contact</a>
-            <a href="resume.html"><button class="download-cv">Download CV</button></a>
-        </nav>
-    </header>
+        </div>
+        
+        <a href="contact.html">Contact</a>
+        <a href="resume.html"><button class="download-cv">Download CV</button></a>
+    </nav>
+
+    <!-- Move hamburger here -->
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
 
     <div class="skills-container">
         <div class="skills-header">
@@ -583,29 +655,34 @@ body.dark-mode {
         </button>
     </div>
     
-
     <script>
-        // Mobile menu functionality
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('show');
-    });
-}
-
-// Dropdown functionality
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-if (dropdownToggle && dropdownMenu) {
-    dropdownToggle.addEventListener('click', function(event) {
-        event.preventDefault();
-        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-}
-
-    </script>
-    <script src="theme.js"></script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav-links');
+        
+            hamburger.onclick = function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('show');
+            };
+        
+            // Close menu when clicking links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.onclick = () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('show');
+                };
+            });
+        
+            // Handle dropdowns
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.onclick = (e) => {
+                    e.preventDefault();
+                    const menu = toggle.nextElementSibling;
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                };
+            });
+        });
+        </script>
+            <script src="theme.js"></script>
 </body>
 </html>
