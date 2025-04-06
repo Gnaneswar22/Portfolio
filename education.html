@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education</title>
     <link rel="stylesheet" href="optimize.css">
-    <script src="theme.js"></script>
-    <link rel="stylesheet" href="theme.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -158,6 +156,7 @@
 
 /* Hamburger Menu */
 .hamburger {
+    right: 30%;
     display: none;
     flex-direction: column;
     gap: 6px;
@@ -251,6 +250,7 @@
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
   .hamburger {
+    margin-right: 10%;
     display: flex;
   }
   
@@ -1093,6 +1093,341 @@
         font-size: 1.2rem;
     }
 }
+/* Add these inside your existing :root */
+:root {
+    /* Light Theme Colors */
+    --light-bg: #ffffff;
+    --light-secondary: #f5f5f5;
+    --light-text: #333333;
+    --light-text-secondary: #666666;
+    --light-border: #e0e0e0;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+}
+/* Light Mode Overrides */
+body.light-mode {
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.light-mode .header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--light-border);
+}
+
+body.light-mode .nav-links a {
+    color: var(--light-text);
+}
+
+body.light-mode .panel {
+    background: var(--light-secondary);
+    color: var(--light-text);
+}
+
+body.light-mode .stairs .step i:nth-child(1) {
+    background: var(--light-secondary);
+}
+
+body.light-mode .step-number {
+    color: var(--light-text);
+}
+
+/* Theme Toggle Container - Keep your existing style */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    transform-origin: top center;
+    animation: gentlePendulum 3s ease-in-out infinite;
+}
+
+.toggle-thread {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color) 50%,
+        rgba(255, 77, 77, 0.3) 100%
+    );
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+.toggle-thread::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .mode-toggle {
+    background: #ffd700;
+    color: var(--light-text);
+    box-shadow: 0 2px 15px rgba(255, 215, 0, 0.4);
+}
+
+body.dark-mode .mode-toggle {
+    background: var(--darker-bg);
+    color: var(--text-light);
+    box-shadow: 0 2px 15px rgba(42, 45, 58, 0.4);
+}
+
+/* Pendulum Animation */
+@keyframes gentlePendulum {
+    0% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+/* Thread Glow Animation */
+@keyframes threadGlow {
+    0%, 100% { 
+        box-shadow: 0 0 5px var(--primary-color),
+                    0 0 8px var(--primary-color);
+    }
+    50% { 
+        box-shadow: 0 0 10px var(--primary-color),
+                    0 0 15px var(--primary-color);
+    }
+}
+
+.toggle-thread {
+    animation: threadGlow 3s ease-in-out infinite;
+}
+/* Add these to your existing CSS */
+/* Light Mode Styles */
+body.light-mode {
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.light-mode .header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--light-border);
+}
+
+body.light-mode .nav-links a {
+    color: var(--light-text);
+}
+
+/* Keep educational panels colors unchanged */
+.panel:nth-child(1) { 
+    background: #00BFA5 !important; 
+    color: white !important;
+}
+.panel:nth-child(2) { 
+    background: #2B3B4E !important; 
+    color: white !important;
+}
+.panel:nth-child(3) { 
+    background: #FF5B7F !important; 
+    color: white !important;
+}
+
+/* Theme Toggle Styles - Keep existing animation */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    transform-origin: top center;
+    animation: gentlePendulum 3s ease-in-out infinite;
+}
+
+.toggle-thread {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color) 50%,
+        rgba(255, 77, 77, 0.3) 100%
+    );
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+.mode-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Theme-specific toggle button styles */
+body.light-mode .mode-toggle {
+    background: #ffd700;
+    color: #333;
+    box-shadow: 0 2px 15px rgba(255, 215, 0, 0.4);
+}
+
+body.dark-mode .mode-toggle {
+    background: var(--darker-bg);
+    color: var(--text-light);
+    box-shadow: 0 2px 15px rgba(42, 45, 58, 0.4);
+}
+/* Download CV Button Styles */
+body.light-mode .download-cv  {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--light-text);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+body.light-mode .download-cv:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Keep dark mode styles */
+body.dark-mode .download-cv {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.8rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+body.dark-mode .download-cv:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Fix dropdown text in light mode */
+body.light-mode .dropdown-toggle {
+    color: var(--light-text);
+}
+
+body.light-mode .dropdown-menu {
+    background: var(--light-bg);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+body.light-mode .dropdown-menu a {
+    color: var(--light-text);
+}
+
+body.light-mode .dropdown-menu a:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--primary-color);
+}
+/* Text visibility fixes for light mode */
+body.light-mode .logo span {
+    color: var(--light-text);
+}
+
+body.light-mode .timeline-logo span {
+    color: var(--light-text);
+}
+
+body.light-mode .panel-header h3 {
+    color: white !important; /* Keep panel header text white */
+}
+
+body.light-mode .panel p {
+    color: white !important; /* Keep panel content text white */
+}
+
+body.light-mode .percentage {
+    color: white; /* Keep percentage text white */
+}
+
+body.light-mode .step-number {
+    color: #333; /* Keep step numbers visible */
+}
+
+/* Keep dark mode styles */
+body.dark-mode .logo span,
+body.dark-mode .timeline-logo span {
+    color: var(--text-light);
+}
+
+/* Fix other text elements in light mode */
+body.light-mode .success-text h2,
+body.light-mode .success-text p {
+    color: var(--light-text);
+}
+
+body.light-mode .skill-name,
+body.light-mode .section-title {
+    color: var(--light-text);
+}
+
+/* Keep panel styles consistent */
+.panel-header i {
+    color: white !important;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--darker-bg);
+    flex-direction: column;
+    padding: 70px 0 1rem;
+    gap: 2rem;
+    text-align: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Light mode mobile menu */
+body.light-mode .nav-links {
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Dark mode mobile menu */
+body.dark-mode .nav-links {
+   
+    color: var(--text-light);
+}
+
+/* Mobile menu items in both themes */
+.nav-links a {
+    color: inherit;
+}
 
     </style>
 </head>
@@ -1127,8 +1462,16 @@
           <a href="contact.html">Contact</a>
           <a href="resume.html"><button class="download-cv">Download CV</button></a>
       </nav>
+             <!-- Add this HTML for the floating toggle -->
+<div class="theme-toggle-container">
+    <div class="toggle-thread"></div>
+    <button class="mode-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+        <div class="toggle-handle"></div>
+    </button>
+</div>
     </header>
-   
+
 
 
 
@@ -1223,15 +1566,25 @@
             <p>Sri Sivani College Of Engineering <br> Artificial Inelligence & Machine Learning -2026</p>
         </div>
     </div>
-    <!-- Add this HTML for the floating toggle -->
-<div class="theme-toggle-container">
-    <div class="toggle-thread"></div>
-    <button class="mode-toggle" aria-label="Toggle Theme">
-        <i class="fas fa-moon"></i>
-        <div class="toggle-handle"></div>
-    </button>
-</div>
+
 
 </body>
+<script src="theme.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.className = `${savedTheme}-mode`;
+    
+    const themeToggle = document.querySelector('.mode-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            // Theme toggle logic
+        });
+    }
+});
+
+</script>
+
 <script src="menu.js"></script>
 </html>

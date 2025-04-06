@@ -1688,3 +1688,43 @@ color: var(--text-gray);
 }
 
 /* Update the HTML structure like this */
+/* Profile Views Counter */
+.profile-views {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.profile-views i {
+  color: var(--accent-primary);
+  animation: blink 2s infinite;
+}
+
+.profile-views #viewCount {
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Theme-specific styles */
+.light-mode .profile-views {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-dark);
+}
+
+.dark-mode .profile-views {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}

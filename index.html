@@ -585,7 +585,6 @@
 
 
     <!-- Footer Section -->
-    <!-- Footer Section -->
 <footer class="modern-footer">
     <div class="footer-ripple"></div>
     
@@ -628,6 +627,12 @@
             </a>
         </div>
     </div>
+        <!-- Profile Views Counter -->
+        <div class="profile-views">
+            <i class="fas fa-eye"></i>
+            <span id="viewCount">0</span> Profile Views
+        </div>
+    
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top">
@@ -639,6 +644,100 @@
         <p class="copyright">© 2024 Gnaneswar Damarasingu. All rights reserved.</p>
     </div>
 </footer>
+
+<style>
+/* Profile Views Counter */
+.profile-views {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px auto; /* Changed to auto for horizontal centering */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: fit-content; /* Makes container fit content width */
+}
+
+.profile-views i {
+    color: var(--accent-primary);
+    animation: blink 2s infinite;
+    font-size: 1.1rem; /* Slightly larger icon */
+}
+
+.profile-views #viewCount {
+    font-weight: bold;
+    margin: 0 5px;
+    font-size: 1rem; /* Slightly larger number */
+}
+
+/* Center alignment for the entire footer content */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-grid {
+    margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Theme-specific styles */
+.light-mode .profile-views {
+    color: var(--text-dark);
+}
+
+.dark-mode .profile-views {
+    color: var(--text-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-views {
+        font-size: 0.8rem;
+    }
+    
+    .profile-views i {
+        font-size: 1rem;
+    }
+}
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewCountElement = document.getElementById('viewCount');
+        let viewCount = localStorage.getItem('portfolioViews') || 0;
+        viewCount = parseInt(viewCount) + 1;
+        
+        // Animate counting up
+        const duration = 1500;
+        const steps = 30;
+        const increment = viewCount / steps;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if(current >= viewCount) {
+                current = viewCount;
+                clearInterval(timer);
+            }
+            viewCountElement.textContent = Math.floor(current).toLocaleString();
+        }, duration / steps);
+        
+        localStorage.setItem('portfolioViews', viewCount);
+    });
+</script>
+
 
     
         

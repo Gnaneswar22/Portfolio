@@ -1,0 +1,36 @@
+/* Profile Views Counter */
+.profile-views {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.profile-views i {
+    color: var(--accent-primary);
+    animation: blink 2s infinite;
+}
+
+.profile-views #viewCount {
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Theme-specific styles */
+.light-mode .profile-views {
+    color: var(--text-dark);
+}
+
+.dark-mode .profile-views {
+    color: var(--text-light);
+}
