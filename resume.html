@@ -6,25 +6,18 @@
     <title>My Resume</title>
     <link rel="stylesheet" href="optimize.css">
     <link rel="stylesheet" href="theme.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #64ffda;
+            --primary-color: #ff4D4D;
+            --accent-green: #4CAF50;
+            --dark-bg: #2A2D3A;
+            --darker-bg: #1E2028;
+            --text-light: #ffffff;
+            --text-gray: #B0B0B0;
+            --text-gold: #FFD700;
             --bg-color: #0e1014;
-            --text-light: #8892b0;
-            --text-bright: #ccd6f6;
         }
-
-        :root {
-    --primary-color: #ff4D4D;
-    --accent-green: #4CAF50;
-    --dark-bg: #2A2D3A;
-    --darker-bg: #1E2028;
-    --text-light: #ffffff;
-    --text-gray: #B0B0B0;
-    --text-gold: #FFD700;
-}
 
         * {
             margin: 0;
@@ -46,7 +39,6 @@
         .resume-container {
             max-width: 1000px;
             width: 100%;
-          
             margin: 2rem auto;
             text-align: center;
         }
@@ -138,6 +130,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .download-button::before {
@@ -150,7 +143,7 @@
             background: linear-gradient(
                 120deg,
                 transparent,
-                rgba(100,255,218,0.2),
+                rgba(255,77,77,0.2),
                 transparent
             );
             transition: 0.5s;
@@ -161,9 +154,9 @@
         }
 
         .download-button:hover {
-            background: rgba(100,255,218,0.1);
+            background: rgba(255,77,77,0.1);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(100,255,218,0.2);
+            box-shadow: 0 5px 15px rgba(255,77,77,0.2);
         }
 
         .download-icon {
@@ -181,35 +174,219 @@
             opacity: 0.8;
         }
 
-        /* Loading animation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10,25,47,0.9);
-            display: none;
-            justify-content: center;
+        /* Header */
+        .header {
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            background: rgba(42, 45, 58, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .download-cv {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--text-light);
+            padding: 0.6rem 1.8rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-cv:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--darker-bg);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-menu a {
+            color: var(--text-light);
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
             z-index: 1000;
         }
 
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid transparent;
-            border-top-color: var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            transition: all 0.3s ease;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        /* Mobile Navigation Styles */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100vh;
+                background: var(--darker-bg);
+                flex-direction: column;
+                padding: 70px 0 1rem;
+                gap: 2rem;
+                text-align: center;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.2rem;
+                color: var(--text-light);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--primary-color);
+            }
+
+            .nav-links a:last-child {
+                margin: 1rem 20px;
+            }
+
+            .download-cv {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .hamburger.active span:first-child {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:last-child {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background: var(--darker-bg);
+                padding: 0 0 0 20px;
+            }
+
+            .dropdown-toggle {
+                padding: 1rem 0;
+            }
+
+            .dropdown-menu a {
+                padding: 0.8rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 100%;
+            }
+            
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.8rem 0;
+            }
+            
             .resume-container {
                 padding: 1rem;
             }
@@ -224,286 +401,53 @@
             }
         }
 
-
-
-        :root {
-            --bg-primary: #0a0d14;
-            --bg-secondary: #111827;
-            --accent-primary: #E94B3C;
-            --accent-secondary: #2D1B69;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
+        /* Theme toggle container styles */
+        .theme-toggle-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
         }
-        :root {
-    --primary-color: #ff4D4D;
-    --accent-green: #4CAF50;
-    --dark-bg: #2A2D3A;
-    --darker-bg: #1E2028;
-    --text-light: #ffffff;
-    --text-gray: #B0B0B0;
-    --text-gold: #FFD700;
-}
-/* Header */
-.header {
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(42, 45, 58, 0.98);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+        .mode-toggle {
+            width: 60px;
+            height: 30px;
+            background: var(--darker-bg);
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
 
-.logo img {
-    width: 40px;
-    height: 40px;
-}
+        .toggle-handle {
+            position: absolute;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
 
-.logo span {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
+        .toggle-thread {
+            position: absolute;
+            top: -25px;
+            right: 25px;
+            width: 2px;
+            height: 25px;
+            background: var(--text-gray);
+        }
 
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.download-cv {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--text-light);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.download-cv:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-        .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.download-cv {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--text-light);
-    padding: 0.6rem 1.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.download-cv:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* Dropdown Styles */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: var(--bg-secondary);
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 4px;
-    padding: 10px 0;
-    top: 100%;
-    left: 0;
-}
-
-.dropdown-menu a {
-    color: var(--text-light);
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown-toggle:hover {
-    color: var(--primary-color);
-}
-
-/* Mobile adjustments for dropdown */
-@media (max-width: 768px) {
-    .dropdown {
-        width: 100%;
-    }
-
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        background: var(--darker-bg);
-        padding: 0 0 0 20px;
-    }
-
-    .dropdown-toggle {
-        padding: 1rem 0;
-    }
-
-    .dropdown-menu a {
-        padding: 0.8rem 0;
-        font-size: 1.2rem;
-    }
-}
-
-
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 1000;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-light);
-    transition: all 0.3s ease;
-}
-
-/* Mobile Navigation Styles */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-  
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px; /* Width of the menu */
-    height: 100vh; /* Full height */
-    background: var(--darker-bg); /* Dark background */
-    flex-direction: column;
-    padding: 70px 0 1rem; /* Top padding to account for header */
-    gap: 2rem;
-    text-align: center;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links a {
-    display: block;
-    padding: 1rem 0;
-    font-size: 1.2rem;
-    color: var(--text-light);
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--primary-color);
-  }
-
-  /* Download CV button styling */
-  .nav-links a:last-child {
-    margin: 1rem 20px;
-  }
-
-  .download-cv {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* Hamburger animation */
-  .hamburger.active span:first-child {
-    transform: translateY(9px) rotate(45deg);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:last-child {
-    transform: translateY(-9px) rotate(-45deg);
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .nav-links {
-    width: 100%; /* Full width for smaller devices */
-  }
-  
-  .nav-links a {
-    font-size: 1.1rem;
-    padding: 0.8rem 0;
-  }
-}
-
-
-
+        /* For light mode - will be toggled by JavaScript */
+        body.light-mode {
+            --bg-color: #f5f5f5;
+            --text-light: #333333;
+        }
     </style>
 </head>
 <body>
@@ -539,81 +483,79 @@
         </nav>
     </header>
      
-    <div class="resume-container" style="margin-top: -10%;">
+    <div class="resume-container" >
         <h1 class="resume-title">RESUME</h1>
         
         <div class="resume-wrapper">
             <div class="resume-image-container">
                 <!-- Replace with your resume image -->
-                <img src="images/gnaneswar_resume.jpg" alt="Resume Preview" class="resume-image">
+                <img src="images/Gnanesh_resume_page-0001.jpg" alt="Resume Preview" class="resume-image">
             </div>
         </div>
 
         <div class="download-section">
-            <button class="download-button" onclick="downloadResume()">
+            <!-- Direct download link instead of using fetch -->
+            <a href="images/Gnanesh_resume.pdf" download="Gnanesh_resume.pdf" class="download-button">
                 <span>Download Resume</span>
                 <i class="fas fa-download download-icon"></i>
-            </button>
+            </a>
             <p class="file-info">PDF Format • 2.1 MB</p>
         </div>
     </div>
 
-    <div class="loading-overlay">
-        <div class="loading-spinner"></div>
+    <!-- Theme toggle button -->
+    <div class="theme-toggle-container">
+        <div class="toggle-thread"></div>
+        <button class="mode-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+            <div class="toggle-handle"></div>
+        </button>
     </div>
-<!-- Add this HTML for the floating toggle -->
-<div class="theme-toggle-container">
-    <div class="toggle-thread"></div>
-    <button class="mode-toggle" aria-label="Toggle Theme">
-        <i class="fas fa-moon"></i>
-        <div class="toggle-handle"></div>
-    </button>
-</div>
 
     <script>
-function downloadResume() {
-    const loadingOverlay = document.querySelector('.loading-overlay');
-    loadingOverlay.style.display = 'flex';
-
-    // Set a timeout for fetch operation (e.g., 10 seconds)
-    const fetchWithTimeout = (url, options, timeout = 10000) =>
-        Promise.race([
-            fetch(url, options),
-            new Promise((_, reject) =>
-                setTimeout(() => reject(new Error('Request timed out')), timeout)
-            ),
-        ]);
-
-    fetchWithTimeout('images/gnaneswar_resume.pdf')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const blobUrl = window.URL.createObjectURL(blob);
-            const downloadLink = document.createElement('a');
-            downloadLink.style.display = 'none';
-            downloadLink.href = blobUrl;
-            const timestamp = '2024-12-29';
-            downloadLink.download = `Resume_${timestamp}.pdf`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            window.URL.revokeObjectURL(blobUrl);
-        })
-        .catch(error => {
-            console.error('Download failed:', error);
-            alert('Unable to download the resume. Please check your connection or file path.');
-        })
-        .finally(() => {
-            loadingOverlay.style.display = 'none';
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.mode-toggle');
+            const body = document.body;
+            const toggleHandle = document.querySelector('.toggle-handle');
+            const moonIcon = document.querySelector('.fa-moon');
+            
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('light-mode');
+                
+                if (body.classList.contains('light-mode')) {
+                    toggleHandle.style.left = '35px';
+                    moonIcon.classList.remove('fa-moon');
+                    moonIcon.classList.add('fa-sun');
+                } else {
+                    toggleHandle.style.left = '5px';
+                    moonIcon.classList.remove('fa-sun');
+                    moonIcon.classList.add('fa-moon');
+                }
+            });
+            
+            // Dropdown functionality for mobile
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.nextElementSibling.style.display = 
+                            this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
         });
-}
-
     </script>
-    <script src="menu.js"></script>
-    <script src="theme.js"></script>
 </body>
 </html>

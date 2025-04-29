@@ -34,7 +34,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -144,9 +143,6 @@ body.dark-mode {
     cursor: pointer;
     padding: 4px;
     z-index: 1001;
-    position: fixed;
-    right: 10%;
-    top: 25px;
 }
 
 .hamburger span {
@@ -335,6 +331,10 @@ body.dark-mode {
 
     .hamburger {
         display: flex;
+        position: absolute;
+        right: 1rem;
+        top: 1.5rem;
+        z-index: 1001;
     }
 
     .hamburger.active span:first-child {
@@ -407,6 +407,17 @@ body.dark-mode {
     .skill-name {
         font-size: 0.8rem;
     }
+    
+    .theme-toggle-container {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        height: auto;
+    }
+    
+    .toggle-thread {
+        display: none;
+    }
 }
 
 /* Animation for menu items */
@@ -432,135 +443,39 @@ body.dark-mode {
     .nav-links.show .dropdown { animation-delay: 0.5s; }
     .nav-links.show a:nth-last-child(1) { animation-delay: 0.6s; }
 }
-/* Hamburger Menu */
-.hamburger {
-    display: none; /* Hidden by default */
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .header {
-        padding: 1rem;
-        position: relative;
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        position: absolute;
-        left: 75%;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1001;
-    }
-
-    .hamburger span {
-        width: 100%;
-        height: 3px;
-        background-color: var(--text-light);
-        transition: all 0.3s ease;
-    }
-
-    .hamburger.active span:first-child {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:last-child {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--darker-bg);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        z-index: 1000;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links a {
-        color: var(--text-light);
-        font-size: 1.2rem;
-        padding: 1rem 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown {
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-        background: transparent;
-        box-shadow: none;
-        padding: 0;
-    }
-
-    .dropdown-toggle {
-        justify-content: center;
-        padding: 1rem 0;
-    }
-}
-
-
     </style>
 </head>
 <body class="light-mode">
     <header class="header">
-    <div class="logo">
-        <img src="logo.png" alt="Logo">
-    </div>
-    
-    <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="aboutme.html">About</a>
-        <a href="skills.html">Skills</a>
-        <a href="education.html">Education</a>
-        
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
-            <div class="dropdown-menu">
-                <a href="certificate.html">Certifications</a>
-                <a href="achievements.html">Achievements</a>
-                <a href="internships.html">Internships</a>
-            </div>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
         </div>
         
-        <a href="contact.html">Contact</a>
-        <a href="resume.html"><button class="download-cv">Download CV</button></a>
-    </nav>
-
-    <!-- Move hamburger here -->
-    <button class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-</header>
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="aboutme.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Experience <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="certificate.html">Certifications</a>
+                    <a href="achievements.html">Achievements</a>
+                    <a href="internships.html">Internships</a>
+                </div>
+            </div>
+            
+            <a href="contact.html">Contact</a>
+            <a href="resume.html"><button class="download-cv">Download CV</button></a>
+        </nav>
+    </header>
 
     <div class="skills-container">
         <div class="skills-header">
@@ -596,7 +511,6 @@ body.dark-mode {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="skill-icon" alt="Tailwind">
                     <span class="skill-name">Tailwind CSS</span>
                 </div>
-                
             </div>
         </div>
 
@@ -657,32 +571,57 @@ body.dark-mode {
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
             const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('.nav-links');
-        
-            hamburger.onclick = function() {
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
                 this.classList.toggle('active');
-                nav.classList.toggle('show');
-            };
-        
+                navLinks.classList.toggle('show');
+            });
+            
             // Close menu when clicking links
             document.querySelectorAll('.nav-links a').forEach(link => {
-                link.onclick = () => {
+                link.addEventListener('click', function() {
                     hamburger.classList.remove('active');
-                    nav.classList.remove('show');
-                };
+                    navLinks.classList.remove('show');
+                });
             });
-        
+            
             // Handle dropdowns
             document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.onclick = (e) => {
-                    e.preventDefault();
-                    const menu = toggle.nextElementSibling;
-                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-                };
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const menu = this.nextElementSibling;
+                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
             });
+            
+            // Theme toggle
+            const themeToggle = document.querySelector('.mode-toggle');
+            const body = document.body;
+            
+            themeToggle.addEventListener('click', function() {
+                if (body.classList.contains('light-mode')) {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            }
         });
-        </script>
-            <script src="theme.js"></script>
+    </script>
 </body>
 </html>
